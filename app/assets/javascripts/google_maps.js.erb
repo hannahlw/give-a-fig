@@ -1,0 +1,49 @@
+$(document).ready(function(){
+
+function initialize(latitude, longitude) {
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+      center: new google.maps.LatLng(latitude, longitude),
+      zoom: 14,
+      mapTypeId: google.maps.MapTypeId.TERRAIN
+      }
+    var map = new google.maps.Map(mapCanvas, mapOptions)
+
+ 
+   var cs = <%= CompostSite.all.to_json %>
+   cs.forEach(function(compost){
+    var lat = compost.latitude
+    var lon = compost.longitude
+    var myLatLng = new google.maps.LatLng(lat, lon)
+    new google.maps.Marker({
+      position: myLatLng,
+      map: map
+        })
+   })
+}
+
+function getLocation(){ navigator.geolocation.getCurrentPosition(function(position){
+     var latitude = position.coords.latitude;
+     var longitude = position.coords.longitude;
+
+      new initialize(latitude, longitude);
+    })
+  }
+ 
+ getLocation();
+
+$(".zip_search").on('click', function(event) {
+  event.preventDefault();
+  $('#map-canvas').empty();
+  
+
+  var zipcode = $("#zip_code").val()
+  path = "http://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode
+  $.get(path, function(data) {
+    var latitude = data["results"][0]["geometry"]["location"]["lat"];
+    var longitude = data["results"][0]["geometry"]["location"]["lng"];
+    new initialize(latitude, longitude);
+  })
+})
+
+})

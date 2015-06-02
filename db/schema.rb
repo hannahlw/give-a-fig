@@ -11,14 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150601213927) do
+ActiveRecord::Schema.define(version: 20150602144458) do
 
   create_table "compost_sites", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "days"
+    t.string   "hours"
+    t.string   "organizer"
+    t.string   "composted_by"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "food_donations", force: :cascade do |t|
