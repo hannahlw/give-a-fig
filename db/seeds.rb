@@ -18,6 +18,6 @@ compost_site_data.each do |cs|
     hours: cs['hours'],
     organizer: cs['organizer'],
     composted_by: cs['composted_by'],
-    url: cs['website']['url']
+    # url: cs['website']['url']
   )
 end
