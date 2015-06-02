@@ -5,19 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+CompostSite.destroy_all
 
 compost_site_data = JSON.parse(Net::HTTP.get(URI.parse('https://data.cityofnewyork.us/resource/rmmq-46n5.json')))
 
 compost_site_data.each do |cs|
   CompostSite.create(
     name: cs['location'],
-    address: cs['location_1']['human_address'].gsub('"','').gsub('{address:', '').gsub('city:', ' ').gsub('state:', ' ').gsub('zip:', ' ').gsub('&nbsp;&nbsp;&nbsp;}', ''),
+    address: cs['location_1']['human_address'].gsub('"','').gsub('{address:', '').gsub('city:', ' ').gsub('state:', ' ').gsub('zip:', ' ').gsub('&nbsp;&nbsp;&nbsp;}', '').gsub('&nbsp;}', '').gsub('&nbsp;', '').gsub('&nbsp;&nbsp;}', '').gsub('&amp;', ''),
     latitude: cs['location_1']['latitude'].to_f,
     longitude: cs['location_1']['longitude'].to_f,
     days: cs['days'],
     hours: cs['hours'],
     organizer: cs['organizer'],
-    composted_by: cs['composted_by'],
-    # url: cs['website']['url']
+    composted_by: cs['composted_by']
   )
 end
