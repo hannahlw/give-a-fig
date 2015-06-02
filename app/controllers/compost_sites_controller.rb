@@ -1,0 +1,2 @@
+class CompostSitesController < ApplicationController
+end
