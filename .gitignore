@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# API Keys
+/config/secrets.yml
