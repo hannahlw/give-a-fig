@@ -12,6 +12,9 @@
 </div>
 
 <div>
-<%= %>
+<ul class = "site">
+  <% @compostsites.each do |compost| %>
+    <li class = "<%= /\b\d{5}\b/.match(compost.address)[0] %>"><%= compost.name %></li>
+  <% end %>
+</ul>
 </div>
-
