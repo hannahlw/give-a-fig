@@ -1,1 +1,23 @@
 <h1>Find a recipe for your ingredients</h1>
+
+<%= form_tag("/recipes", method: "get") do %>
+<%= label_tag :ingredients, "Add Ingredients" %>
+<%= text_field_tag "ingredients[]" %>
+<%= text_field_tag "ingredients[]" %>
+<%= text_field_tag "ingredients[]" %>
+<%= submit_tag("Find Recipes") %>
+<% end %>
+
+<% if @recipe_info != nil %>
+<% @recipe_info.each do |recipe_hash| %>
+<h3> Name: <%= recipe_hash[:name] %></h3>
+<% recipe_hash[:ingredient].each do |ing| %>
+<ul>
+<p><%= ing %></p>
+</ul>
+<% end %>
+<%= recipe_hash[:link] %>
+<%= image_tag("#{recipe_hash[:image]}") %>
+<% end %>
+<% end %>
+
