@@ -10,12 +10,17 @@ function initialize(latitude, longitude) {
       }
     var map = new google.maps.Map(mapCanvas, mapOptions)
 
-   var page = $("div.page").attr("id")
-   debugger;
-   var cs = <%= CompostSite.all.to_json %>
-   cs.forEach(function(compost){
-    var lat = compost.latitude
-    var lon = compost.longitude
+    var page = $("body.page").attr("id")
+
+    if(page === "compost_sites"){
+    var cs = <%= CompostSite.all.to_json %>
+    } else if (page === "food_donations"){
+    var cs = <%= FoodDonation.all.to_json %>
+    }
+
+   cs.forEach(function(site){
+    var lat = site.latitude
+    var lon = site.longitude
     var myLatLng = new google.maps.LatLng(lat, lon)
     new google.maps.Marker({
       position: myLatLng,
