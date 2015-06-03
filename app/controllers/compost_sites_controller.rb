@@ -1,4 +1,9 @@
 class CompostSitesController < ApplicationController
   def index
-  end
+    # zipcode = "10004"
+    # @compostsites = CompostSite.all.where('address LIKE ?', "%#{zipcode}%")
+    @compostsites = CompostSite.all
+ end
+
+
 end
