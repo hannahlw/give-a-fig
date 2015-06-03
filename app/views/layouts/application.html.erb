@@ -9,10 +9,10 @@
   <%= analytics_init if Rails.env.production? %>
 </head>
 <body id="<%= params[:controller] %>" class= "page <%= params[:action] %>">
-
-  <%= render :partial => "layouts/nav" %>
+  <%= render :partial => "layouts/header" %>
 
   <%= yield %>
 
+  <%= render :partial => "layouts/footer" %>
 </body>
 </html>
