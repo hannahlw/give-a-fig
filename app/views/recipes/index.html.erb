@@ -8,4 +8,16 @@
 <%= submit_tag("Find Recipes") %>
 <% end %>
 
-<% @results %>
+<% if @recipe_info != nil %>
+<% @recipe_info.each do |recipe_hash| %>
+<h3> Name: <%= recipe_hash[:name] %></h3>
+<% recipe_hash[:ingredient].each do |ing| %>
+<ul>
+<p><%= ing %></p>
+</ul>
+<% end %>
+<%= recipe_hash[:link] %>
+<%= image_tag("#{recipe_hash[:image]}") %>
+<% end %>
+<% end %>
+
