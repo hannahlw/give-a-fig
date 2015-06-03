@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602144458) do
+ActiveRecord::Schema.define(version: 20150603172002) do
 
   create_table "compost_sites", force: :cascade do |t|
     t.string   "name"
@@ -31,8 +31,16 @@ ActiveRecord::Schema.define(version: 20150602144458) do
     t.string   "name"
     t.string   "address"
     t.string   "url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "phone_number"
+    t.string   "hours"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   create_table "users", force: :cascade do |t|
