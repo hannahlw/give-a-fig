@@ -8,7 +8,6 @@
 require 'open-uri'
 
 CompostSite.destroy_all
-FoodDonation.destroy_all
 
 compost_site_data = JSON.parse(Net::HTTP.get(URI.parse('https://data.cityofnewyork.us/resource/rmmq-46n5.json')))
 
@@ -24,8 +23,6 @@ compost_site_data.each do |cs|
     composted_by: cs['composted_by']
   )
 end
-
-FoodDonation.create(name: "Flatiron Pantry", address: "11 Broadway, New York, NY 10004")
 
 # names = Array.new
 
