@@ -1,14 +1,17 @@
 <h1>Food Pantry Donation Sites</h1>
 
-<div>
-<div id="map-canvas"></div>
-<%= form_tag do %>
-<div>
-<%= label_tag "zip_code", "Not the Area You Want?" %>
-<%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
-</div>
-<%= submit_tag "Search", class: 'zip_search' %>
-<% end %>
+<!-- script to load the map on the map pages -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<div id = "FoodDonation" class = "page">
+  <div id="map-canvas"></div>
+  <%= form_tag do %>
+  <div>
+    <%= label_tag "zip_code", "Not the Area You Want?" %>
+    <%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
+  </div>
+  <%= submit_tag "Search", class: 'zip_search' %>
+  <% end %>
 </div>
 
 <div>
@@ -18,3 +21,5 @@
   <% end %>
 </ul>
 </div>
+
+<%= render :partial => "layouts/footer" %>

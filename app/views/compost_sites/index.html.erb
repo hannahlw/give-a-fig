@@ -1,20 +1,30 @@
-<h1>Compost Sites</h1>
+
+
+<!-- script to load the map on the map pages -->
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<div class="text-center">
+  <h3>
+    <span class="color">Compost Sites</color>
+  </h3>
+  <div>
+    <div id="map-canvas"></div>
+    <%= form_tag do %>
+    <div>
+      <%= label_tag "zip_code", "Not the Area You Want?" %>
+      <%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
+    </div>
+    <%= submit_tag "Search", class: 'zip_search' %>
+    <% end %>
+  </div>
+</div>
 
 <div>
-<div id="map-canvas"></div>
-<%= form_tag do %>
-<div>
-<%= label_tag "zip_code", "Not the Area You Want?" %>
-<%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
-</div>
-<%= submit_tag "Search", class: 'zip_search' %>
-<% end %>
+  <ul class = "site">
+    <% @compostsites.each do |compost| %>
+      <li class = "<%= /\b\d{5}\b/.match(compost.address)[0] %>"><%= compost.name %></li>
+    <% end %>
+  </ul>
 </div>
 
-<div>
-<ul class = "site">
-  <% @compostsites.each do |compost| %>
-    <li class = "<%= /\b\d{5}\b/.match(compost.address)[0] %>"><%= compost.name %></li>
-  <% end %>
-</ul>
-</div>
+<%= render :partial => "layouts/footer" %>
