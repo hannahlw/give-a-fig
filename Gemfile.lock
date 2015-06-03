@@ -95,6 +95,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.8)
     formatador (0.2.5)
+    geocoder (1.2.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     google-analytics-rails (0.0.6)
@@ -290,11 +291,13 @@ DEPENDENCIES
   devise
   dotenv-rails
   factory_girl_rails
+  geocoder
   google-analytics-rails
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
   json
+  nokogiri (~> 1.6.6.2)
   pg
   pry
   rails (= 4.2.0)
