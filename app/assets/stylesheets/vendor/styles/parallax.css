@@ -106,7 +106,7 @@
 }
 /* Parallax four */
 .parallax-four {
-	background-image: url("../../img/backgrounds/3.jpg");
+	background-image: url("/assets/images/backgrounds/3.jpg");
 }
 .parallax-four .p-element h2,
 .parallax-four .p-element p{
