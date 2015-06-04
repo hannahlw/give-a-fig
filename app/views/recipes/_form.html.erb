@@ -1,4 +1,4 @@
-<%= form_tag("/recipes", method: "get") do %>
+<%= form_tag("/recipes", id: "add-field", method: "get") do %>
 <%= label_tag :ingredients, "Add Ingredients" %>
 <%= text_field_tag "ingredients[]" %>
 <%= text_field_tag "ingredients[]" %>
