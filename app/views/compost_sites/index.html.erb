@@ -1,27 +1,35 @@
 <!-- script to load the map on the map pages -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-<div class="text-center">
+<div class="container">
+  <div class="text-center">
 
-  <h3>
-    <span class="color">Compost Sites</color>
-  </h3>
+    <div class="block-heading-two">
+      <h3><span>Compost Sites</span></h3>
+    </div>
 
-  <%= form_tag do %>
-    <%= label_tag "zip_code", "Not the Area You Want?" %><br>
-    <%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
-    <%= submit_tag "Search", class: 'zip_search' %>
-  <% end %>
-  
-  <div id="map-canvas"></div>
 
-  <div class="cta-one-content">
-    <ul>
-      <% @compostsites.each do |compost| %>
-        <li class="zip <%= /\b\d{5}\b/.match(compost.address)[0] %>">
-          <strong><%= compost.name %></strong>, <%= compost.address %></li>
-      <% end %>
-    </ul>
+        <%= form_tag do %>
+          <%= label_tag "zip_code", "Not the Area You Want?" %><br>
+          <%= text_field_tag "zip_code", nil, placeholder: "Enter zip code"%>
+          <%= submit_tag "Search", class: 'zip_search' %>
+        <% end %><br>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-6" id="map-canvas"></div>
+
+        <div class="col-md-6 col-sm-6">
+          <div class="cta-one-content">
+            <ul>
+              <strong>Donation centers near you:</strong><br><br>
+              <% @compostsites.each do |compost| %>
+                <li class="zip <%= /\b\d{5}\b/.match(compost.address)[0] %>">
+                  <strong><%= compost.name %></strong>, <%= compost.address %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
   </div>
-
 </div>
