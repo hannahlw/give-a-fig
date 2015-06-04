@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Give-A-Fig</title>
+  <head>
+    <title>Give-A-Fig</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-  <%= analytics_init if Rails.env.production? %>
-</head>
-<body id="<%= params[:controller] %>" class= "page <%= params[:action] %>">
-  <%= render :partial => "layouts/header" %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= analytics_init if Rails.env.production? %>
 
-  <%= yield %>
+    <meta name="description" content="Give-A-Fig">
+    <meta name="keywords" content="Don't waste your food">
+    <meta name="author" content="Made at the Flatiron School">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <%= render :partial => "layouts/footer" %>
-</body>
+  </head>
+  <body id="<%= params[:controller] %>" class= "page <%= params[:action] %>">
+    <%= render :partial => "layouts/header" %>
+
+    <%= yield %>
+
+    <%= render :partial => "layouts/footer" %>
+  </body>
 </html>
