@@ -11,21 +11,25 @@
     <div class="col-md-4">
     <button type="button" id="add-more">Add up to 5 ingredients!</button>
     </div>
-    <% if @recipe_info != nil %>
+    <% if @recipe_info == [] %>
+      <div class="col-md-4">
+      <h4>Sorry, your list of ingredients did not turn up with any recipes! Please try again with other ingredients.</h4>
+      </div>
+      <% elsif @recipe_info != nil %>
    <div class="rest-recipe">
       <h3>Checkout These Recipes!</h3>
     <% @recipe_info.each do |recipe_hash| %>
-   <div class="block-heading-two">
-        <h3><%= link_to "#{recipe_hash[:name]}", recipe_hash[:link] %></h3>
-    </div>
-        <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 333px; height: 268px;" %>          
-          <div class="col-md-3 col-sm-6">
-          <h4>Ingredient List: </h4>
-          <div class="item-ingred">
-          <ul class="list-unstyled">
-          <% recipe_hash[:ingredient].each do |ing| %>
-            <li><%= ing %></li> 
-      <% end %>
+     <div class="block-heading-two">
+          <h3><%= link_to "#{recipe_hash[:name]}", recipe_hash[:link] %></h3>
+      </div>
+          <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 333px; height: 268px;" %>          
+            <div class="col-md-3 col-sm-6">
+            <h4>Ingredient List: </h4>
+            <div class="item-ingred">
+            <ul class="list-unstyled">
+            <% recipe_hash[:ingredient].each do |ing| %>
+              <li><%= ing %></li> 
+        <% end %>
       </ul>
       </div>
           </div>
