@@ -1,5 +1,17 @@
-<h1>Find a recipe for your ingredients</h1>
+<div class="restaurant">
+<div class="container">
+<div id="bs-carousel-1" class="carousel slide" data-ride="carousel" data-interval="5000" data-pause="hover" data-wrap="true">
+<div class="carousel-inner">
+</div>
+</div>
+</div>
+</div>
 
+<div class="block-heading-two text-center">
+<h3>
+<span>Find a Recipe for Your Ingredients</span>
+</h3>
+</div>
 <%= form_tag("/recipes", method: "get") do %>
 <%= label_tag :ingredients, "Add Ingredients" %>
 <%= text_field_tag "ingredients[]" %>
