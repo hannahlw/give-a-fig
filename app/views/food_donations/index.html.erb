@@ -1,25 +1,29 @@
-<h1>Food Pantry Donation Sites</h1>
-
 <!-- script to load the map on the map pages -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-<div id = "FoodDonation" class = "page">
-  <div id="map-canvas"></div>
-  <%= form_tag do %>
+<div class="text-center">
+
+  <h3>
+    <span class="color">Food Pantry Donation Sites</color>
+  </h3>
+
   <div>
-    <%= label_tag "zip_code", "Not the Area You Want?" %>
-    <%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
+    <%= form_tag do %>
+      <%= label_tag "zip_code", "Not the Area You Want?" %><br>
+      <%= text_field_tag "zip_code", nil, placeholder: "Enter your zip code"%>
+      <%= submit_tag "Search", class: 'zip_search' %>
+    <% end %>
   </div>
-  <%= submit_tag "Search", class: 'zip_search' %>
-  <% end %>
+
+  <div id="map-canvas"></div>
+
+  <div class="cta-one-content">
+    Donation centers near you:<br>
+    <ul>
+      <% @donationsites.each do |donation| %>
+        <li class="zip <%= /\b\d{5}\b/.match(donation.address)[0] %>">
+          <strong><%= donation.name %></strong>, <%= donation.address %></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
-<div>
-<ul class = "site">
-  <% @donationsites.each do |donation| %>
-    <li class = "<%= /\b\d{5}\b/.match(donation.address)[0] %>"><%= donation.name %></li>
-  <% end %>
-</ul>
-</div>
-
-
