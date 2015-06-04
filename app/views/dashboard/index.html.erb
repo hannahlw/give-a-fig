@@ -1,271 +1,105 @@
-	<!-- Description, Keywords and Author -->
-		<meta name="description" content="Give-A-Fig">
-		<meta name="keywords" content="Don't waste your food.">
-		<meta name="author" content="made at the Flatiron School">
+	<!-- Main content starts -->
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<div class="main-block">
+		<div class="container">
+		<br />
+			<div class="text-center">
+				<h3><span class="color">Give a fig.</span></h3>
+				<p>Don't waste your food.</p>
+			</div>
 
-		<!-- Styles -->
-		<!-- Bootstrap CSS -->
-		<link href="/assets/vendor/bootstrap.min.css" rel="stylesheet">
-		<!-- Font awesome CSS -->
-		<link href="/assets/vendor/font-awesome.min.css" rel="stylesheet">
-		<!-- Magnific Popup -->
-		<link href="/assets/vendor/magnific-popup.css" rel="stylesheet">
-		<!-- Owl carousel -->
-		<link href="/assets/vendor/owl.carousel.css" rel="stylesheet">
+			<%= render :partial => "layouts/carousel" %>
 
-		<!-- CSS for this page -->
-		<!-- Revolution Slider -->
-		<link href="/assets/vendor/settings.css" rel="stylesheet">
+			<div class="img-box-4 text-center">
+					<div class="row">
+						<div class="col-md-4 col-sm-6">
 
-		<!-- Base style -->
-		<link href="/assets/vendor/styles/style.css" rel="stylesheet">
-		<!-- Skin CSS -->
-		<link href="/assets/vendor/styles/skin-lblue.css" rel="stylesheet" id="color_theme">
-
-		<!-- Custom CSS. Type your CSS code in custom.css file -->
-		<link href="/assets/vendor/custom.css" rel="stylesheet">
-
-		<!-- Favicon -->
-		<link rel="shortcut icon" href="#">
-	</head>
-
-	<!-- Add class "boxed" along with body for boxed layout. -->
-	<!-- Add "pattern-x" (1 to 5) for background patterns. -->
-	<!-- Add "img-x" (1 to 5) for background images. -->
-	<body>
-
-    <!-- Main content starts -->
-
-			<div class="main-block">
-				<div class="container">
-				<br />
-					<div class="text-center">
-						<h3><span class="color">Give a fig.</span></h3>
-						<p>Don't waste your food.</p>
-					</div>
-
-			<%= render :partial => "layouts/quoteimg" %>
-
-				<div class="img-box-4 text-center">
-						<div class="row">
-							<div class="col-md-4 col-sm-6">
-
-								<!-- Image Box #4 Item -->
-								<div class="img-box-4-item">
-									<!-- Image -->
-									<a href="#" class="lightbox">
-										<img src="/assets/gallery/small/1.jpg" alt="" class="img-responsive" /></a></a>
-									<!-- Image Box #4 Content -->
-									<div class="img-box-4-content">
-										<!-- Icon -->
-										<a href="#"><i class="fa fa-picture-o bg-red"></i></a>
-										<!-- Heading -->
-										<h4><a href="<%= food_donations_path %>">DONATE</a></h4>
-										<!-- Border -->
-										<div class="bor bg-red"></div>
-										<!-- Paragraph -->
-										<p>Uneaten, packaged food donations of any size help feed families in NYC. Find a drop-off location near you.</p>
-									</div>
+							<!-- Image Box #4 Item -->
+							<div class="img-box-4-item">
+								<!-- Image -->
+								<a href="#" class="lightbox">
+									<img src="/assets/gallery/small/1.jpg" alt="" class="img-responsive" /></a></a>
+								<!-- Image Box #4 Content -->
+								<div class="img-box-4-content">
+									<!-- Icon -->
+									<a href="#"><i class="fa fa-picture-o bg-red"></i></a>
+									<!-- Heading -->
+									<h4><a href="<%= food_donations_path %>">DONATE</a></h4>
+									<!-- Border -->
+									<div class="bor bg-red"></div>
+									<!-- Paragraph -->
+									<p>Uneaten, packaged food donations of any size help feed families in NYC. Find a drop-off location near you.</p>
 								</div>
 							</div>
+						</div>
 
-
-							<div class="col-md-4 col-sm-6">
-								<div class="img-box-4-item">
-									<a href="/assets/gallery/small/2.jpg" class="lightbox">
-										<img src="/assets/gallery/small/2.jpg" alt="" class="img-responsive" /></a>
-									<div class="img-box-4-content">
-										<a href="#"><i class="fa fa-video-camera bg-lblue"></i></a>
-										<h4><a href="<%= compost_sites_path %>">COMPOST</a></h4>
-										<div class="bor bg-lblue"></div>
-										<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
-									</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="img-box-4-item">
+								<a href="/assets/gallery/small/2.jpg" class="lightbox">
+									<img src="/assets/gallery/small/2.jpg" alt="" class="img-responsive" /></a>
+								<div class="img-box-4-content">
+									<a href="#"><i class="fa fa-video-camera bg-lblue"></i></a>
+									<h4><a href="<%= compost_sites_path %>">COMPOST</a></h4>
+									<div class="bor bg-lblue"></div>
+									<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
 								</div>
 							</div>
+						</div>
 
-
-							<div class="col-md-4 col-sm-6">
-								<div class="img-box-4-item">
-									<a href="/assets/gallery/small/3.jpg" class="lightbox"><img src="/assets/gallery/small/3.jpg" alt="" class="img-responsive" /></a>
-									<div class="img-box-4-content">
-										<a href="#"><i class="fa fa-music bg-green"></i></a>
-										<h4><a href="#">COMMUNITY</a></h4>
-										<div class="bor bg-green"></div>
-										<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
-									</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="img-box-4-item">
+								<a href="/assets/gallery/small/3.jpg" class="lightbox"><img src="/assets/gallery/small/3.jpg" alt="" class="img-responsive" /></a>
+								<div class="img-box-4-content">
+									<a href="#"><i class="fa fa-music bg-green"></i></a>
+									<h4><a href="#">COMMUNITY</a></h4>
+									<div class="bor bg-green"></div>
+									<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
 								</div>
 							</div>
+						</div>
 
-
-
-							<div class="col-md-4 col-sm-6">
-								<div class="img-box-4-item">
-									<a href="/assets/gallery/small/3.jpg" class="lightbox">
-										<img src="/assets/gallery/small/3.jpg" alt="" class="img-responsive" /></a>
-									<div class="img-box-4-content">
-										<a href="#"><i class="fa fa-music bg-green"></i></a>
-										<h4><a href="#">HOST DINNER</a></h4>
-										<div class="bor bg-green"></div>
-										<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
-									</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="img-box-4-item">
+								<a href="/assets/gallery/small/3.jpg" class="lightbox">
+									<img src="/assets/gallery/small/3.jpg" alt="" class="img-responsive" /></a>
+								<div class="img-box-4-content">
+									<a href="#"><i class="fa fa-music bg-green"></i></a>
+									<h4><a href="#">HOST DINNER</a></h4>
+									<div class="bor bg-green"></div>
+									<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
 								</div>
 							</div>
+						</div>
 
-
-							<div class="col-md-4 col-sm-6">
-								<div class="img-box-4-item">
-									<a href="/assets/gallery/small/4.jpg" class="lightbox">
-										<img src="/assets//gallery/small/4.jpg" alt="" class="img-responsive" /></a>
-									<div class="img-box-4-content">
-										<a href="#"><i class="fa fa-picture-o bg-purple"></i></a>
-										<h4><a href="#">FIND RECIPES</a></h4>
-										<div class="bor bg-purple"></div>
-										<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
-									</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="img-box-4-item">
+								<a href="/assets/gallery/small/4.jpg" class="lightbox">
+									<img src="/assets//gallery/small/4.jpg" alt="" class="img-responsive" /></a>
+								<div class="img-box-4-content">
+									<a href="#"><i class="fa fa-picture-o bg-purple"></i></a>
+									<h4><a href="#">FIND RECIPES</a></h4>
+									<div class="bor bg-purple"></div>
+									<p>Expired and inedible foods don't need to go to waste. Learn more about compost centers and why they are awesome.</p>
 								</div>
 							</div>
+						</div>
 
-
-
-							<div class="col-md-4 col-sm-6">
-								<div class="img-box-4-item">
-									<a href="img/gallery/small/4.jpg" class="lightbox">
-										<img src="/assets/gallery/small/3.jpg" alt="" class="img-responsive" /></a>
-									<div class="img-box-4-content">
-										<a href="#"><i class="fa fa-picture-o bg-purple"></i></a>
-										<h4><a href="#">LEARN MORE</a></h4>
-										<div class="bor bg-purple"></div>
-										<p>Certain circumstances and owing libero tempore minus to the owing claims of duty.</p>
-									</div>
+						<div class="col-md-4 col-sm-6">
+							<div class="img-box-4-item">
+								<a href="img/gallery/small/4.jpg" class="lightbox">
+									<img src="/assets/gallery/small/3.jpg" alt="" class="img-responsive" /></a>
+								<div class="img-box-4-content">
+									<a href="#"><i class="fa fa-picture-o bg-purple"></i></a>
+									<h4><a href="#">LEARN MORE</a></h4>
+									<div class="bor bg-purple"></div>
+									<p>Certain circumstances and owing libero tempore minus to the owing claims of duty.</p>
 								</div>
 							</div>
-
-
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-			</div>
-
-			<span class="totop"><a href="#"><i class="fa fa-angle-up bg-color"></i></a></span>
-
-					<!-- Javascript files -->
-					<!-- jQuery -->
-					<script src="assets/vendor/jquery.js"></script>
-					<!-- Bootstrap JS -->
-					<script src="assets/vendor/bootstrap.min.js"></script>
-					<!-- Placeholders JS -->
-					<script src="assets/vendor/placeholders.js"></script>
-					<!-- Magnific Popup -->
-					<script src="assets/vendor/jquery.magnific-popup.min.js"></script>
-					<!-- Owl carousel -->
-					<script src="assets/vendor/owl.carousel.min.js"></script>
-					<!-- Respond JS for IE8 -->
-					<script src="assets/vendor/respond.min.js"></script>
-					<!-- HTML5 Support for IE -->
-					<script src="assets/vendor/html5shiv.js"></script>
-					<!-- Main JS -->
-					<script src="assets/vendor/main.js"></script>
-
-					<!-- Javascript for this page -->
-					<!-- Revolution slider -->
-					<script src="assets/vendor/jquery.themepunch.tools.min.js"></script>
-					<script src="assets/vendor/jquery.themepunch.revolution.min.js"></script>
-					<!-- Waypoints -->
-					<script src="assets/vendor/waypoints.min.js"></script>
-					<!-- jQuery CountTo -->
-					<script src="assets/vendor/jquery.countTo.js"></script>
-
-			<script type="text/javascript">
-				<!-- Counting code -->
-				$(document).ready(function(){
-					// Way Points With Count To()
-					$('.number-count').waypoint(function(down){
-						if(!$(this).hasClass('stop-counter'))
-						{
-							$(this).countTo();
-							$(this).addClass('stop-counter');
-						}
-					}, {
-						offset: '90%'
-					});
-				});
-			</script>
-
-			<script type="text/javascript">
-				jQuery(document).ready(function() {
-					jQuery('.r-slider .banner').revolution({
-						delay:7000,
-						startheight:400,
-						startwidth:1000,
-						startWithSlide:0,
-
-						fullScreenAlignForce:"off",
-						autoHeight:"off",
-
-						shuffle:"off",
-
-						onHoverStop:"on",
-
-						thumbWidth:100,
-						thumbHeight:50,
-						thumbAmount:3,
-
-						hideThumbsOnMobile:"on",
-						hideNavDelayOnMobile:1500,
-						hideBulletsOnMobile:"off",
-						hideArrowsOnMobile:"off",
-						hideThumbsUnderResoluition:0,
-
-						hideThumbs:10,
-						hideTimerBar:"on",
-
-						keyboardNavigation:"on",
-
-						navigationType:"bullet",
-						navigationArrows:"solo",
-						navigationStyle:"round",
-
-						navigationHAlign:"center",
-						navigationVAlign:"bottom",
-
-						soloArrowLeftHalign:"left",
-						soloArrowLeftValign:"center",
-						soloArrowLeftHOffset:20,
-						soloArrowLeftVOffset:0,
-
-						soloArrowRightHalign:"right",
-						soloArrowRightValign:"center",
-						soloArrowRightHOffset:20,
-						soloArrowRightVOffset:0,
-
-
-						touchenabled:"on",
-						swipe_velocity:"0.7",
-						swipe_max_touches:"1",
-						swipe_min_touches:"1",
-						drag_block_vertical:"false",
-
-						stopAtSlide:-1,
-						stopAfterLoops:-1,
-						hideCaptionAtLimit:0,
-						hideAllCaptionAtLilmit:0,
-						hideSliderAtLimit:0,
-
-						dottedOverlay:"none",
-
-						spinned:"spinner4",
-
-						fullWidth:"off",
-						forceFullWidth:"off",
-						fullScreen:"off",
-						fullScreenOffsetContainer:"#topheader-to-offset",
-
-					});
-				});
-			</script>
-			</body>
-		</html>
+	<span class="totop"><a href="#"><i class="fa fa-angle-up bg-color"></i></a></span>
