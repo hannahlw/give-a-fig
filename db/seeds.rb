@@ -23,18 +23,3 @@ compost_site_data.each do |cs|
     composted_by: cs['composted_by']
   )
 end
-
-# names = Array.new
-
-# doc = Nokogiri::XML(open("http://ws.feedingamerica.org/FAWebService.asmx/GetAllOrganizations"))
-
-# names = doc.xpath("//div[contains(@class,'results-box'/div[contains(@class, 'name')/a").collect { |name| name.text.strip }
-# binding.pry
-
-# doc.css("div.results-box").each do |center|
-#   FoodDonation.create(
-#     name: center.css("div.name a").text
-#   )
-# end
-
-# FoodDonation.create(name: "Jon", address: "dfsfdsf", url: "dfshjfshi", latitude: 1.92237, longitude: 1.23232, phone: "212-212-1212")
