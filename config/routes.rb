@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :communities
+
   root 'dashboard#index'
 
   resources :compost_sites
