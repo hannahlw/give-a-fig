@@ -1,39 +1,34 @@
 <div class="container">
     <%= render partial: 'layouts/restaurantcarousel' %>
 
-      <div class="row">
-        <div class="col-md-6 col-sm-6">
-          <h3>Find a Recipe For Ingredients You Already Have</h3>
-          <p>Do you need help finding recipes to cook with the ingredients that are in you already have? Checkout our recipe generator. Simply type in the ingredients you have in you house that you want to cook with and we will give you some recipe ideas.</p>
-          <br><%= render 'form' %><br>
-          <button type="button" id="add-more">Add up to 5 ingredients!</button>
-        </div>
+  <div class="block-heading-two">
+    <h3><span>Find a Recipe For Ingredients You Already Have</span></h3>
+  </div>
 
-        <div class="col-md-6 col-sm-6">
-        </div>
-     </div>
+  <p>Do you need help finding recipes to cook with the ingredients that are in you already have? Checkout our recipe generator. Simply type in the ingredients you have in you house that you want to cook with and we will give you some recipe ideas.</p>
 
-     <div class="row">
-        <% if @recipe_info == [] %>
-          <div class="col-md-4">
-            <h4>Sorry, your list of ingredients did not turn up with any recipes! Please try again with other ingredients.</h4>
+  <br><%= render 'form' %><br>
+
+  <button type="button" id="add-more">Add up to 5 ingredients!</button>
+
+  <div class="row">
+    <% if @recipe_info == [] %>
+      <h4>Sorry, your list of ingredients did not turn up with any recipes! Please try again with other ingredients.</h4>
+    <% elsif @recipe_info != nil %>
+        <% @recipe_info.each do |recipe_hash| %>
+          <div class="block-heading-two">
+            <h3><span class="color"><%= recipe_hash[:name] %> | <%= link_to "Get Recipe", recipe_hash[:link] %></span></h3>
           </div>
-        <% elsif @recipe_info != nil %>
-            <% @recipe_info.each do |recipe_hash| %>
-              <div class="block-heading-two">
-                <h3><span class="color"><%= recipe_hash[:name] %> | <%= link_to "Get Recipe", recipe_hash[:link] %></span></h3>
-              </div>
-              <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 150px; height: 150px;" %>
-                <div class="item-ingred">
-                  <h4>Ingredient List: </h4>
-                  <ul class="list-unstyled">
-                  <% recipe_hash[:ingredient].each do |ing| %>
-                    <li><%= ing %></li>
-                  <% end %>
-                  </ul>
-                </div>
-              <% end %>
-        <% end %>
-      </div>
-
+          <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 150px; height: 150px;" %>
+          <div class="item-ingred">
+            <h4>Ingredient List: </h4>
+            <ul class="list-unstyled">
+            <% recipe_hash[:ingredient].each do |ing| %>
+              <li><%= ing %></li>
+            <% end %>
+            </ul>
+          </div>
+       <% end %>
+     <% end %>
+  </div>
 </div>
