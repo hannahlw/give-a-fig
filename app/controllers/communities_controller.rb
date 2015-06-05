@@ -6,7 +6,6 @@ class CommunitiesController < ApplicationController
 
   def new
     @community = Community.new
-    @user = current_user
   end
 
   def create

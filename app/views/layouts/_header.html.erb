@@ -38,7 +38,7 @@
                     </li>
                     <li>
                       <% if current_user %>
-                        <%= link_to "Start A Community", new_community_path(current_user.id) %></a>
+                        <%= link_to "Start A Community", new_community_path %></a>
                       <% else %>
                         <%= link_to "Start A Community", new_user_session_path %></a>
                       <% end %>
@@ -46,25 +46,12 @@
                  <li>
               </ul>
 
-                <li><a href="/compost_sites">Compost Sites</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="/compost_sites">Find one near you</a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-
-                <li><a href="/food_donations">Food Donations</a>
+              <li><a href="/compost_sites">Compost Sites</a>
                 <!-- Submenu -->
                 <ul>
                   <!-- 2nd Level sub menu -->
                   <li>
-                    <a href="/food_donations">Find a site near you</a>
+                    <a href="/compost_sites">Find one near you</a>
                     <ul>
                       <li></li>
                     </ul>
@@ -72,34 +59,46 @@
                 <li>
               </ul>
 
-                <li><a href="/recipes">Recipes</a></li>
-                  <!-- Submenu -->
+              <li><a href="/food_donations">Food Donations</a>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="/food_donations">Find a site near you</a>
                   <ul>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
+                    <li></li>
+                  </ul>
+                </li>
+              <li>
+            </ul>
 
-                <li><a href="/about">About</a></li>
-                  <!-- Submenu -->
+            <li><a href="/recipes">Recipes</a></li>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="#"></a>
                   <ul>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
+                    <li></li>
+                  </ul>
+                </li>
+              <li>
+            </ul>
+          </li>
 
+            <li><a href="/about">About</a></li>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="#"></a>
+                  <ul>
+                    <li></li>
+                  </ul>
+                </li>
+              <li>
+            </ul>
+          </li>
 
           <% if user_signed_in? %>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
