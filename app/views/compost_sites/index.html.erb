@@ -20,10 +20,10 @@
 
         <div class="col-md-6 col-sm-6">
           <div class="cta-one-content">
-            <ul>
+            <ul class = "list">
               <strong>Donation centers near you:</strong><br><br>
               <% @compostsites.each do |compost| %>
-                <li class="zip <%= /\b\d{5}\b/.match(compost.address)[0] %>">
+                <li class="<%= compost.latitude %> <%= compost.longitude %>">
                   <strong><%= compost.name %></strong>, <%= compost.address %></li>
               <% end %>
             </ul>

@@ -21,10 +21,10 @@
 
       <div class="col-md-6 col-sm-6">
         <div class="cta-one-content">
-          <ul>
+          <ul class = "list">
             <strong>Donation centers near you:</strong><br><br>
             <% @donationsites.each do |donation| %>
-              <li class="zip <%= /\b\d{5}\b/.match(donation.address)[0] %>">
+              <li class="<%= donation.latitude %> <%= donation.longitude %>">
                 <strong><%= donation.name %></strong>, <%= donation.address %></li>
             <% end %>
           </ul>
