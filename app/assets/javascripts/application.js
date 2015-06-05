@@ -15,3 +15,4 @@
 //= require_tree ../../../vendor/assets/javascripts/.
 //= require carousel
 //= require google_maps
+//= require_tree .
