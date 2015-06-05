@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree ../../../vendor/assets/javascripts/.
+//= require_carousel.js
+//= require_google_maps.js
 //= require_tree .

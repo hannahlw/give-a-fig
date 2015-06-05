@@ -1,5 +1,4 @@
-<script type="text/javascript">
-  <!-- Counting code -->
+  // Counting code
   $(document).ready(function(){
     // Way Points With Count To()
     $('.number-count').waypoint(function(down){
@@ -12,4 +11,3 @@
       offset: '90%'
     });
   });
-</script>
