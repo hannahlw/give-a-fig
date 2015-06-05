@@ -8,13 +8,13 @@ class RecipesController < ApplicationController
       @results = JSON.parse(Net::HTTP.get(URI.parse(call)))["matches"]
 
       @recipe_info = []
-      
-      @results.each do |recipe|  
+
+      @results.each do |recipe|
         call_id = "http://api.yummly.com/v1/api/recipe/#{recipe["id"]}?_app_id=#{ENV['yummly_app_id']}&_app_key=#{ENV['yummly_key']}"
         links = JSON.parse(Net::HTTP.get(URI.parse(call_id)))["source"]["sourceRecipeUrl"]
         name = recipe["recipeName"]
-        image = recipe["imageUrlsBySize"]["90"]
-        ingredients = recipe["ingredients"] 
+        image = JSON.parse(Net::HTTP.get(URI.parse(call_id)))["images"][0]["imageUrlsBySize"]["360"]
+        ingredients = recipe["ingredients"]
         @recipe_info << eachrecipe = {
             :name => name,
             :link => links,
@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
             :ingredient => ingredients
         }
       end
-    end 
+    end
 
   end
 end
