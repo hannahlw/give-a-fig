@@ -19,10 +19,28 @@
                 <li><a href="#">Home</a>
                   <!-- Submenu -->
                   <ul>
-                    <li</li>
                     <!-- 2nd Level sub menu -->
                     <li>
                       <a href="#"></a>
+                      <ul>
+                        <li></li>
+                      </ul>
+                    </li>
+                  <li>
+                </ul>
+
+                <li><a href="#">Community</a>
+                  <!-- Submenu -->
+                  <ul>
+                    <!-- 2nd Level sub menu -->
+                    <li>
+                      <a href="#">Join A Community</a>
+                      <ul>
+                        <li></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="#">Start A Community</a>
                       <ul>
                         <li></li>
                       </ul>
@@ -33,22 +51,46 @@
                 <li><a href="/compost_sites">Compost Sites</a>
                   <!-- Submenu -->
                   <ul>
-                    <li</li>
                     <!-- 2nd Level sub menu -->
                     <li>
-                      <a href="#"></a>
+                      <a href="/compost_sites">Find one near you</a>
                       <ul>
                         <li></li>
                       </ul>
                     </li>
                   <li>
                 </ul>
-              </li>
 
                 <li><a href="/food_donations">Food Donations</a>
+                <!-- Submenu -->
+                <ul>
+                  <!-- 2nd Level sub menu -->
+                  <li>
+                    <a href="/food_donations">Find a site near you</a>
+                    <ul>
+                      <li></li>
+                    </ul>
+                  </li>
+                <li>
+              </ul>
+
+                <li><a href="/recipes">Recipes</a></li>
                   <!-- Submenu -->
                   <ul>
-                    <li</li>
+                    <!-- 2nd Level sub menu -->
+                    <li>
+                      <a href="#"></a>
+                      <ul>
+                        <li></li>
+                      </ul>
+                    </li>
+                  <li>
+                </ul>
+              </li>
+
+                <li><a href="/about">About</a></li>
+                  <!-- Submenu -->
+                  <ul>
                     <!-- 2nd Level sub menu -->
                     <li>
                       <a href="#"></a>
@@ -61,52 +103,16 @@
               </li>
 
 
-                <li><a href="/recipes">Recipes</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign Out", destroy_user_session, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
 
-                <li><a href="/about">About</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
+        </ul>
+      </div>
 
-                <li><a href="/contact">Contact</a></a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
-            </ul>
-          </div>
         <!-- Navigation ends -->
 
           </div>
