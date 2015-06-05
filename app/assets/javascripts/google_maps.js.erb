@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(".zip").hide();
+  $("ul.list li").hide();
 
   function initialize(latitude, longitude) {
     var mapCanvas = document.getElementById('map-canvas');
@@ -21,31 +21,71 @@ $(document).ready(function(){
     cs.forEach(function(site){
       var lat = site.latitude
       var lon = site.longitude
+        if(page === "food_donations"){
+          var phone = '<p><b>Phone number:</b> '+site.phone_number+'</p>'
+        } else {
+          var phone = ""
+        }
+
+      var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h4 id="firstHeading" class="firstHeading">'+site.name+'</h4>'+
+      '<div id="bodyContent">'+
+      '<p><b>Address:</b> '+site.address+'</p>'+
+      '<p><b>Hours:</b> '+site.hours+'</p>'+
+            phone+
+      '</div>'+
+      '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+          content: contentString
+      });
       var myLatLng = new google.maps.LatLng(lat, lon)
-      new google.maps.Marker({
+      var marker = new google.maps.Marker({
         position: myLatLng,
         map: map
-      })
+      });
+        google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map,marker);
+      });
     })
-  }
-
-  function getZip (latitude,longitude) {
-    $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=true", function(data){
-
-      data["results"][0]["address_components"].forEach(function(add_comp){
-        if(add_comp["types"][0]==="postal_code"){
-          var zipcode = add_comp["long_name"];
-          $(".zip").not("." + zipcode).hide();
-          $(".zip." + zipcode).show();
+    google.maps.event.addListener(map, 'idle', function(ev){
+      $("ul.list li").hide();
+      var list = $("ul.list li");
+      $.each(list, function(){
+        var lat = parseFloat(this.attributes.class.value.split(" ")[0]);
+        var lng = parseFloat(this.attributes.class.value.split(" ")[1]);
+        var ne = map.getBounds().getNorthEast();
+        var sw = map.getBounds().getSouthWest();
+        var lat_min = sw.A;
+        var lat_max = ne.A;
+        var lng_min = sw.F;
+        var lng_max = ne.F;
+        if(lat > lat_min && lat < lat_max && lng > lng_min && lng < lng_max){
+          $(this).show()
         }
       })
-    })
+    });
   }
+
+  // function getZip (latitude,longitude) {
+  //   $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=true", function(data){
+
+  //     data["results"][0]["address_components"].forEach(function(add_comp){
+  //       if(add_comp["types"][0]==="postal_code"){
+  //         var zipcode = add_comp["long_name"];
+  //         $(".zip").not("." + zipcode).hide();
+  //         $(".zip." + zipcode).show();
+  //       }
+  //     })
+  //   })
+  // }
 
   function getLocation(){ navigator.geolocation.getCurrentPosition(function(position){
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-      new getZip(latitude, longitude);
+      // new getZip(latitude, longitude);
       new initialize(latitude, longitude);
     })
   }
@@ -55,10 +95,10 @@ $(document).ready(function(){
   $(".zip_search").on('click', function(event) {
     event.preventDefault();
     $('#map-canvas').empty();
-    var zipcode = $("#zip_code").val()
+    // var zipcode = $("#zip_code").val()
 
-    $(".zip").not("." + zipcode).hide();
-    $(".zip." + zipcode).show();
+    // $(".zip").not("." + zipcode).hide();
+    // $(".zip." + zipcode).show();
 
     path = ("http://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode);
     $.get(path, function(data) {
