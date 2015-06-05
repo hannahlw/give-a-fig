@@ -7,7 +7,7 @@
           <div class="col-md-2">
             <!-- Logo section -->
             <div class="logo">
-              <h1><a href="#"><i class="fa fa-laptop"></i> Give a fig</a></h1>
+              <h1><a href="/"><i class="fa fa-laptop"></i>Give a fig</a></h1>
             </div>
           </div>
           <div class="col-md-9">
@@ -16,97 +16,88 @@
             <div class="navy">
               <ul>
                 <!-- Main menu -->
-                <li><a href="#">Home</a>
+
+                <li><a href="#">Community</a>
                   <!-- Submenu -->
                   <ul>
-                    <li</li>
                     <!-- 2nd Level sub menu -->
                     <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
+                      <a href="#">Join A Community</a>
                     </li>
-                  <li>
-                </ul>
+                    <li>
+                      <% if current_user %>
+                        <%= link_to "Start A Community", new_community_path %></a>
+                      <% else %>
+                        <%= link_to "Start A Community", new_user_session_path %></a>
+                      <% end %>
+                   </li>
+                 <li>
+              </ul>
 
-                <li><a href="/compost_sites">Compost Sites</a>
-                  <!-- Submenu -->
+              <li><a href="/compost_sites">Compost Sites</a>
+                <!-- Submenu -->
+                <ul>
+                  <!-- 2nd Level sub menu -->
+                  <li>
+                    <a href="/compost_sites">Find one near you</a>
+                    <ul>
+                      <li></li>
+                    </ul>
+                  </li>
+                <li>
+              </ul>
+
+              <li><a href="/food_donations">Food Donations</a>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="/food_donations">Find a site near you</a>
                   <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
-
-                <li><a href="/food_donations">Food Donations</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
-
-
-                <li><a href="/recipes">Recipes</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
-
-                <li><a href="/about">About</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
-
-                <li><a href="/contact">Contact</a></a>
-                  <!-- Submenu -->
-                  <ul>
-                    <li</li>
-                    <!-- 2nd Level sub menu -->
-                    <li>
-                      <a href="#"></a>
-                      <ul>
-                        <li></li>
-                      </ul>
-                    </li>
-                  <li>
-                </ul>
-              </li>
+                    <li></li>
+                  </ul>
+                </li>
+              <li>
             </ul>
-          </div>
+
+            <li><a href="/recipes">Recipes</a></li>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="#"></a>
+                  <ul>
+                    <li></li>
+                  </ul>
+                </li>
+              <li>
+            </ul>
+          </li>
+
+            <li><a href="/about">About</a></li>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="#"></a>
+                  <ul>
+                    <li></li>
+                  </ul>
+                </li>
+              <li>
+            </ul>
+          </li>
+
+          <% if user_signed_in? %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+
+        </ul>
+      </div>
+
         <!-- Navigation ends -->
 
           </div>

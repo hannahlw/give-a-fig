@@ -14,10 +14,26 @@
 
   </head>
   <body id="<%= params[:controller] %>" class= "page <%= params[:action] %>">
+
+    <!-- Navigation bar -->
     <%= render :partial => "layouts/header" %>
 
+    <!-- Flash notices -->
+    <div class="container">
+      <% if flash[:notice] -%>
+        <p class='notice'><%= flash[:notice] %></p>
+      <% elsif flash[:notice] -%>
+        <p class='error'><%= flash[:error] %></p>
+      <% elsif flash[:alert] -%>
+        <p class='alert'><%= flash[:alert] %></p>
+      <% else %>
+      <% end -%>
+    </div>
+
+    <!-- Main page -->
     <%= yield %>
 
+    <!-- Footer -->
     <%= render :partial => "layouts/footer" %>
   </body>
 </html>
