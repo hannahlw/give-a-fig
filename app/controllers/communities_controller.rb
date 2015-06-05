@@ -20,7 +20,6 @@ class CommunitiesController < ApplicationController
     @user = current_user
   end
 
-
   private
 
   def strong_params
