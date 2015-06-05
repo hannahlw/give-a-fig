@@ -69,23 +69,9 @@ $(document).ready(function(){
     });
   }
 
-  // function getZip (latitude,longitude) {
-  //   $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng="+latitude+","+longitude+"&sensor=true", function(data){
-
-  //     data["results"][0]["address_components"].forEach(function(add_comp){
-  //       if(add_comp["types"][0]==="postal_code"){
-  //         var zipcode = add_comp["long_name"];
-  //         $(".zip").not("." + zipcode).hide();
-  //         $(".zip." + zipcode).show();
-  //       }
-  //     })
-  //   })
-  // }
-
   function getLocation(){ navigator.geolocation.getCurrentPosition(function(position){
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-      // new getZip(latitude, longitude);
       new initialize(latitude, longitude);
     })
   }
@@ -95,10 +81,6 @@ $(document).ready(function(){
   $(".zip_search").on('click', function(event) {
     event.preventDefault();
     $('#map-canvas').empty();
-    // var zipcode = $("#zip_code").val()
-
-    // $(".zip").not("." + zipcode).hide();
-    // $(".zip." + zipcode).show();
 
     path = ("http://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode);
     $.get(path, function(data) {
