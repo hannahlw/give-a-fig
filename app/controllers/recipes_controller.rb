@@ -24,5 +24,8 @@ class RecipesController < ApplicationController
       end
     end
 
+    def not_bad
+    end
+
   end
 end

@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :recipes
   resources :food_donations
   resources :communities
+
+  get 'recipes/not_bad', to: 'recipes#not_bad'
 end
