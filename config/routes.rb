@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :recipes
   resources :food_donations
   resources :communities
+
+  resources :user_communities, only: [:create, :destroy]
 end
