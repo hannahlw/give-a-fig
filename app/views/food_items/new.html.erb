@@ -1,0 +1,11 @@
+<%= form_for @fooditem do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :quanity %>
+<%= f.number_field :quanity %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<%#= f.hidden_field :user_id, value: @user.id %>
+<%#= f.hidden_field :community_id, value: @community.id %>
+<%= f.submit %>
+<% end %>
