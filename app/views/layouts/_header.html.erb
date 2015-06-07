@@ -27,55 +27,49 @@
                     <li>
                       <a href="#">Join A Community</a>
                     </li>
-                    <li>
-                      <% if current_user %>
-                        <%= link_to "Start A Community", new_community_path %></a>
-                      <% else %>
-                        <%= link_to "Start A Community", new_user_session_path %></a>
-                      <% end %>
-                   </li>
-                 <li>
-              </ul>
+                    <% if current_user %>
+                      <li><%= link_to "Start A Community", new_community_path %></a></li>
+                    <% else %>
+                      <li><%= link_to "Start A Community", new_user_session_path %></a></li>
+                    <% end %>
+                  </ul>
+                </li>
 
               <li><a href="/compost_sites">Compost Sites</a>
                 <!-- Submenu -->
                 <ul>
                   <!-- 2nd Level sub menu -->
                   <li>
-                    <a href="/compost_sites">Find one near you</a>
-                    <ul>
-                      <li></li>
-                    </ul>
+                    <a href="/compost_sites">Find a site near you</a>
                   </li>
-                <li>
-              </ul>
+                </ul>
+              </li>
 
-              <li><a href="/food_donations">Food Donations</a>
+            <li><a href="/food_donations">Food Donations</a>
               <!-- Submenu -->
               <ul>
                 <!-- 2nd Level sub menu -->
                 <li>
                   <a href="/food_donations">Find a site near you</a>
-                  <ul>
-                    <li></li>
-                  </ul>
                 </li>
-              <li>
-            </ul>
+                <li>
+                  <a href="/food_donations"></a>
+                </li>
+              </ul>
+            </li>
 
-            <li><a href="/recipes">Recipes</a></li>
+            <li><a href="/recipes">Recipes</a>
               <!-- Submenu -->
               <ul>
                 <!-- 2nd Level sub menu -->
                 <li>
-                  <a href="#"></a>
-                  <ul>
-                    <li></li>
-                  </ul>
+                  <a href="/recipes">For what you have</a>
                 </li>
-              <li>
-            </ul>
-          </li>
+                <li>
+                  <a href="/recipes/not_bad">For what's going bad</a>
+                </li>
+              </ul>
+            </li>
 
             <li><a href="/about">About</a></li>
               <!-- Submenu -->
@@ -83,9 +77,6 @@
                 <!-- 2nd Level sub menu -->
                 <li>
                   <a href="#"></a>
-                  <ul>
-                    <li></li>
-                  </ul>
                 </li>
               <li>
             </ul>
