@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :food_items
+  # match "/food_item", to: 'food_item#create', via: 'post'
+
   devise_for :users
 
   root 'dashboard#index'

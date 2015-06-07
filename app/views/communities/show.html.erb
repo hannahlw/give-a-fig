@@ -1,6 +1,5 @@
 <div class="container">
-
-  <h2>Community: <%= @community.name %></h2>
+  <h1>Community: <%= @community.name %></h1>
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
@@ -13,25 +12,29 @@
   </ul>
   <% end %>
 
-
-
 <% if current_user %>
   <% if member?(@community, current_user) %>
-   <h1>Leave</h1>
+   <!-- <h1>Leave</h1> -->
+   <%= form_for @community, remote: true do |f|  %>
+    <%= f.submit "Leave", id: "join-button"  %>
+    <% end %>
   <% else  %>
-    <h1>Join</h1>
-
+    <!-- <h1>Join</h1> -->
     <%= form_for @community, remote: true do |f|  %>
     <%= f.submit "Join", id: "join-button"  %>
     <% end %>
-
-
-
   <% end %>
 <% else %>
   <h1>Sign IN</h1>
 <% end %>
 
+<h1>Create a new Food Item</h1>
+<!-- show up on the show page of the community this new food item
+needs to be assosiated with the current user that posts it
+post to the food item create action -->
+<%#= form_tag({controller: "fooditem", action: "create"}, method: "post") do  %>
 
-</div>   
+
+</div> 
+ 
 
