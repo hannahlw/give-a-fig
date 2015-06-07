@@ -29,11 +29,18 @@
 <% end %>
 
 <h1>Create a new Food Item</h1>
-<!-- show up on the show page of the community this new food item
-needs to be assosiated with the current user that posts it
-post to the food item create action -->
-<%#= form_tag({controller: "fooditem", action: "create"}, method: "post") do  %>
 
+<%#= form_for [@community, Fooditem.new] do |f| %>
+<%#= f.label :name %>
+<%#= f.text_field :name %>
+<%#= f.label :quanity %>
+<%#= f.number_field :quanity %>
+<%#= f.label :description %>
+<%#= f.text_field :description %>
+<%#= f.hidden_field :user_id, value: @user.id %>
+<%#= f.hidden_field :community_id, value: @community.id %>
+<%#= f.submit %>
+<%# end %>
 
 </div> 
  
