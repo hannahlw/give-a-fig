@@ -10,16 +10,29 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.create(strong_params)
-    @user = current_user
-    # call @user.communities to see all user's communities
-    @user.communities << @community
+    @community.users << current_user
     redirect_to community_path(@community), notice: 'Community was successfully created.'
   end
 
   def show
     @community = Community.find(params[:id])
     @user = current_user
+    # binding.pry
   end
+
+  def update
+    @community = Community.find(params[:id])
+    @user = current_user
+    if @community.users.include?(current_user)
+      @user_community = UserCommunity.find_by(community_id: @community.id, user_id: @user.id)
+      @user_community.destroy    
+    else
+      @community.users << current_user
+      @community.save    
+    end  
+    # binding.pry
+  end
+
 
   private
 
