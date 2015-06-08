@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :user_communities
   has_many :communities, through: :user_communities
-  has_many :food_items, foreign_key: :poster_id
-  has_one :food_items, foreign_key: :claimer_id
+  has_many :food_items, :foreign_key => "poster_id"
+  has_many :food_items, :foreign_key => "claimer_id"
 end

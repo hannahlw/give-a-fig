@@ -1,27 +1,20 @@
 <!-- script to load the map on the map pages -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-<div class="container">
-  
-    <h2>Composting is a natural process of recycling vegetable scraps. Accourding to the The Environmental Protection Agency over 97% of food waste generated ends up in the landfill, composting is a great way to get rid of food waste in a environmentally friendly way and to produce rich soil in the process.</h2>
-    <h3>The following are compost drop off locations around New York City. Click on the location to learn more about the location.</h3>
-    <h3>Also, checkout <a href="http://www1.nyc.gov/site/dsny/recycling-and-garbage/residents/organics-collection-and-drop-off-for-residents.page" target="_blank">NYC Compost Project</a> to see if the City of New York picks up compost in your neighhorbood!</h3>
 <div class="text-center">
-    <div class="block-heading-two">
-      <h3><span>Compost Sites</span></h3>
-    </div>
-
-
-        <%= form_tag do %>
-          <%= label_tag "zip_code", "Not the Area You Want?" %><br>
-          <%= text_field_tag "zip_code", nil, placeholder: "Enter zip code"%>
-          <%= submit_tag "Search", class: 'zip_search' %>
-        <% end %><br>
-
+  <div class="block-heading-two">
+    <h3><span>Compost Sites</span></h3>
+  </div>
+  <div id="map-canvas"></div>
+  <div class="container">
+    <%= form_tag do %>
+      <%= label_tag "zip_code", "Not the Area You Want?" %><br>
+      <%= text_field_tag "zip_code", nil, placeholder: "Enter zip code"%>
+      <%= submit_tag "Search", class: 'zip_search' %>
+    <% end %><br>
+    
       <div class="row">
-        <div class="col-md-6 col-sm-6" id="map-canvas"></div>
-
-        <div class="col-md-6 col-sm-6">
+         <div class="col-md-6 col-sm-6">
           <div class="cta-one-content">
             <ul class = "list">
               <strong>Donation centers near you:</strong><br><br>
@@ -32,8 +25,15 @@
             </ul>
           </div>
         </div>
+    <div class="col-md-6 col-sm-6"><h4>Composting is a natural process of recycling vegetable scraps. Accourding to the The Environmental Protection Agency over 97% of food waste generated ends up in the landfill, composting is a great way to get rid of food waste in a environmentally friendly way and to produce rich soil in the process.</h4>
+    <h4>The following are compost drop off locations around New York City. Click on the location to learn more about the location.</h4>
+    <h4>Also, checkout <a href="http://www1.nyc.gov/site/dsny/recycling-and-garbage/residents/organics-collection-and-drop-off-for-residents.page" target="_blank">NYC Compost Project</a> to see if the City of New York picks up compost in your neighhorbood!</h4></div>
       </div>
 
   </div>
+
 </div>
 <%= render :partial => "layouts/footer" %>
+
+</div>
+

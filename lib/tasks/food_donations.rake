@@ -9,7 +9,7 @@ namespace :csv do
 
     CSV.foreach(csv_file_path) do |row|
       sleep(0.2)
-      FoodDonation.create!({
+      pantry_site = FoodDonation.new({
         :name => row[0],
         :street_address => row[3],
         :city => row[4],
@@ -19,7 +19,14 @@ namespace :csv do
         :hours => row[9],
         :address => row[3].strip + ', ' + row[4].strip + ', ' + row[5].strip + ', ' + row[6].strip
       })
-      puts "Row added!"
+
+      if pantry_site.valid?
+        pantry_site.save
+        puts "Row added!"
+      else
+        puts "Duplicate!!"
+      end
+
     end
   end
 end
