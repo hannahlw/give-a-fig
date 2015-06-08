@@ -4,4 +4,6 @@ class FoodDonation < ActiveRecord::Base
 
   # def create_donation_hash
 
+  validates :latitude, uniqueness: { scope: :longitude }
+
 end

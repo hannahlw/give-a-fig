@@ -56,9 +56,10 @@ ActiveRecord::Schema.define(version: 20150607191501) do
 
   create_table "food_items", force: :cascade do |t|
     t.string   "name"
-    t.integer  "quanity"
+    t.integer  "quantity"
     t.string   "description"
-    t.integer  "user_id"
+    t.integer  "poster_id"
+    t.integer  "claimer_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "community_id"
