@@ -23,8 +23,10 @@ namespace :csv do
       if pantry_site.valid?
         pantry_site.save
         puts "Row added!"
+      else
+        puts "Duplicate!!"
       end
-      
+
     end
   end
 end
