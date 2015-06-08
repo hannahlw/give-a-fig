@@ -1,14 +1,12 @@
 <!-- script to load the map on the map pages -->
 <script src="https://maps.googleapis.com/maps/api/js"></script>
 
-<div class="container">
-<h1>Donating your unwanted food items to a food pantry is a great way to reduce your food waste and help your local community in the process. Checkout food pantries in your area below. Click on the link to get more information about each location. </h1>
-  <div class="text-center">
-
-    <div class="block-heading-two">
-  		<h3><span>Food Pantry Donation Sites</span></h3>
-  	</div>
-
+<div class="text-center">
+  <div class="block-heading-two">
+  	<h3><span>Food Pantry Donation Sites</span></h3>
+  </div>
+  <div id="map-canvas"></div>
+  <div class="container">
     <div>
       <%= form_tag do %>
         <%= label_tag "zip_code", "Not the Area You Want?" %><br>
@@ -17,24 +15,23 @@
       <% end %><br>
     </div>
 
-      <div class="row">
-        <div class="col-md-6 col-sm-6" id="map-canvas"></div>
-
+    <div class="row">
       <div class="col-md-6 col-sm-6">
         <div class="cta-one-content">
           <ul class = "list">
             <strong>Donation centers near you:</strong><br><br>
             <% @donationsites.each do |donation| %>
-              <li class="<%= donation.latitude %> <%= donation.longitude %>">
-                <strong><%= donation.name %></strong>, <%= donation.address %></li>
-            <% end %>
-          </ul>
-          <% if !@donationsites %>
+            <li class="<%= donation.latitude %> <%= donation.longitude %>">
+              <strong><%= donation.name %></strong>, <%= donation.address %></li>
+              <% end %>
+            </ul>
+            <% if !@donationsites %>
             There are no donation sites in your zip code - but there are many nearby! Search again.
-          <% end %>
+            <% end %>
+        </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <h4>Donating your unwanted food items to a food pantry is a great way to reduce your food waste and help your local community in the process. Checkout food pantries in your area below. Click on the link to get more information about each location. </h4> </div>
         </div>
       </div>
     </div>
-
-  </div>
-</div>
