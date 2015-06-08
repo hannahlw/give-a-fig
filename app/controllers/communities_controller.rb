@@ -2,6 +2,7 @@ class CommunitiesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :destroy]
 
   def index
+    @communities = Community.all
   end
 
   def new

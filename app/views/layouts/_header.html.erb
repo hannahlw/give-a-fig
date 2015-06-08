@@ -25,7 +25,8 @@
                   <ul>
                     <!-- 2nd Level sub menu -->
                     <li>
-                      <a href="#">Join A Community</a>
+                      <!-- <a href="#">Join A Community</a> -->
+                      <%= link_to"Join A Community", communities_path %>
                     </li>
                     <% if current_user %>
                       <li><%= link_to "Start A Community", new_community_path %></a></li>
