@@ -6,7 +6,7 @@ class FoodItemsController < ApplicationController
 
   def create
     @fooditem = FoodItem.create(fooditems_params)
-    @community = Community.find_by(params[:community_id])
+    @community = Community.find(params[:food_item][:community_id])
     redirect_to community_path(@community)
   end
 
