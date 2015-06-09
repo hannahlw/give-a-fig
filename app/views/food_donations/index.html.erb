@@ -17,21 +17,24 @@
 
     <div class="row">
       <div class="col-md-6 col-sm-6">
+      <strong>Donation centers near you:</strong><br>
+      <div class="scroll">
         <div class="cta-one-content">
-          <ul class = "list">
-            <strong>Donation centers near you:</strong><br><br>
+          <ul class="list">
+            
             <% @donationsites.each do |donation| %>
             <li class="<%= donation.latitude %> <%= donation.longitude %>">
-              <strong><%= donation.name %></strong>, <%= donation.address %></li>
+              <strong><%= donation.name %></strong></br><%= donation.address %></li>
               <% end %>
             </ul>
             <% if !@donationsites %>
             There are no donation sites in your zip code - but there are many nearby! Search again.
             <% end %>
+            </div>
         </div>
         </div>
         <div class="col-md-6 col-sm-6">
-          <h4>Donating your unwanted food items to a food pantry is a great way to reduce your food waste and help your local community in the process. Checkout food pantries in your area below. Click on the link to get more information about each location. </h4> </div>
+          <blockquote><h4>Donating your unwanted food items to a food pantry is a great way to reduce your food waste and help your local community in the process. Checkout food pantries in your area below. Click on the link to get more information about each location.</h4></blockquote></div>
         </div>
       </div>
     </div>

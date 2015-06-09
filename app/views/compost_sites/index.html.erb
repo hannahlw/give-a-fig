@@ -15,19 +15,21 @@
     
       <div class="row">
          <div class="col-md-6 col-sm-6">
+         <strong>Donation centers near you:</strong><br>
+         <div class="scroll">
           <div class="cta-one-content">
             <ul class = "list">
-              <strong>Donation centers near you:</strong><br><br>
               <% @compostsites.each do |compost| %>
-                <li class="<%= compost.latitude %> <%= compost.longitude %>">
-                  <strong><%= compost.name %></strong>, <%= compost.address %></li>
-              <% end %>
+              <li class="<%= compost.latitude %> <%= compost.longitude %>">
+                <strong><%= compost.name %></strong>, <%= compost.address %></li>
+            <% end %>
             </ul>
+            </div>
           </div>
         </div>
-    <div class="col-md-6 col-sm-6"><h4>Composting is a natural process of recycling vegetable scraps. Accourding to the The Environmental Protection Agency over 97% of food waste generated ends up in the landfill, composting is a great way to get rid of food waste in a environmentally friendly way and to produce rich soil in the process.</h4>
+    <div class="col-md-6 col-sm-6"><blockquote><h4>Composting is a natural process of recycling vegetable scraps. Accourding to the The Environmental Protection Agency over 97% of food waste generated ends up in the landfill, composting is a great way to get rid of food waste in a environmentally friendly way and to produce rich soil in the process.</h4>
     <h4>The following are compost drop off locations around New York City. Click on the location to learn more about the location.</h4>
-    <h4>Also, checkout <a href="http://www1.nyc.gov/site/dsny/recycling-and-garbage/residents/organics-collection-and-drop-off-for-residents.page" target="_blank">NYC Compost Project</a> to see if the City of New York picks up compost in your neighhorbood!</h4></div>
+    <h4>Also, checkout <a href="http://www1.nyc.gov/site/dsny/recycling-and-garbage/residents/organics-collection-and-drop-off-for-residents.page" target="_blank">NYC Compost Project</a> to see if the City of New York picks up compost in your neighhorbood!</h4></blockquote></div>
       </div>
 
   </div>
