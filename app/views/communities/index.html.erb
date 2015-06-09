@@ -1,1 +1,12 @@
-<h2>List of Communities</h2>
+<div class="container">
+<h1>Join a New Community</h1>
+<ul>
+<% @communities.each do |community| %>
+<li><%= link_to community.name, community_path(community) %></li>
+<% end %>
+</ul>
+</div>
+<div class="entire-footer">
+  <%= render :partial => "layouts/footer" %>
+</div>
+

@@ -1,0 +1,15 @@
+.entire-footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:60px; 
+}
+
+.scroll {
+  padding-top: 0px;
+  position:relative;
+  text-align: left;
+  width: 90%;
+  height: 250px;
+  overflow: scroll;
+}
