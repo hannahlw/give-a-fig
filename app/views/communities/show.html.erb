@@ -29,36 +29,46 @@
 <% end %>
 
 <ul>
-  <% FoodItem.all.each do |food|   %>
-  <% if food.community_id == @community.id %>
-  <h3>Food Item posted by <%#= @user.name %></h3>
-  <li><%= food.name %></li>
-  <ul>
-  <% if food.quanity != nil %>
-    <li>Quanity of Item: <%= food.quanity %></li>
-  <% end %>
-  <% if food.description != nil %>
-    <li>Description of Item: <%= food.description %></li>
-  <% end %>
+  <% FoodItem.all.each do |food| %>
+    <% if food.community_id == @community.id %>
+      <h3>Food Item posted by <%#= @user.name %></h3>
+      <li><%= food.name %></li><ul>
+
+        <% if food.quanity != nil %>
+          <li>Quanity of Item: <%= food.quanity %></li>
+        <% end %>
+    <% if food.description != nil %>
+      <li>Description of Item: <%= food.description %></li>
+    <% end %>
   </ul>
   <% end %>
   <% end %>
 </ul>
 
-<h1>Post a New Food Item</h1>
-<%= form_for FoodItem.new do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :quanity %>
-<%= f.number_field :quanity %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.hidden_field :poster_id, value: @user.id %>
-<%= f.hidden_field :community_id, value: @community.id %>
-<%= f.submit %>
+<% if @community.is_user_or_admin?(current_user) %>
+  <h3>Post a New Food Item</h3>
+  <%= form_for FoodItem.new do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :quanity %>
+  <%= f.number_field :quanity %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.hidden_field :poster_id, value: @user.id %>
+  <%= f.hidden_field :community_id, value: @community.id %>
+  <%= f.submit %>
+  <% end %>
+
+  <form accept-charset="UTF-8" action="/invite" method="post">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <label for="q">Invite people:</label>
+    <input id="user" name="q" type="text" />
+    <input name="commit" type="submit" value="Submit" />
+  </form>
+
+<% else %>
+  <p>You must be a member of this community to see its posts.</p>
 <% end %>
 
-</div> 
+</div>
 <%= render :partial => "layouts/footer" %>
- 
-
