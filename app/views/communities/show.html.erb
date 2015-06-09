@@ -3,14 +3,15 @@
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
-  <% if user_signed_in? %>
+<!-- Dont want to show all communities in show page -->
+<!--   <%# if user_signed_in? %>
   <h3>All of your communities:</h3>
   <ul>
-    <% current_user.communities.each do |community| %>
-      <li><%= link_to community.name, community_path(community) %></li>
-    <% end %>
+    <%# current_user.communities.each do |community| %>
+      <li><%#= link_to community.name, community_path(community) %></li>
+    <%# end %>
   </ul>
-  <% end %>
+  <%# end %> -->
 
 <% if current_user %>
   <% if member?(@community, current_user) %>
@@ -19,7 +20,7 @@
     <%= f.submit "Leave", id: "join-button"  %>
     <% end %>
   <% else  %>
-    <!-- <h1>Join</h1> -->
+    <h1>Join</h1>
     <%= form_for @community, remote: true do |f|  %>
     <%= f.submit "Join", id: "join-button"  %>
     <% end %>
@@ -31,11 +32,11 @@
 <ul>
   <% FoodItem.all.each do |food|   %>
   <% if food.community_id == @community.id %>
-  <h3>Food Item posted by <%#= @user.name %></h3>
+  <h5>Posted by: <%= food.poster.first_name %></h5>
   <li><%= food.name %></li>
   <ul>
-  <% if food.quanity != nil %>
-    <li>Quanity of Item: <%= food.quanity %></li>
+  <% if food.quantity != nil %>
+    <li>Quantity of Item: <%= food.quantity %></li>
   <% end %>
   <% if food.description != nil %>
     <li>Description of Item: <%= food.description %></li>
@@ -49,12 +50,13 @@
 <%= form_for FoodItem.new do |f| %>
 <%= f.label :name %>
 <%= f.text_field :name %>
-<%= f.label :quanity %>
-<%= f.number_field :quanity %>
+<%= f.label :quantity %>
+<%= f.number_field :quantity %>
 <%= f.label :description %>
 <%= f.text_field :description %>
 <%= f.hidden_field :poster_id, value: @user.id %>
 <%= f.hidden_field :community_id, value: @community.id %>
+
 <%= f.submit %>
 <% end %>
 
