@@ -59,11 +59,16 @@
   <%= f.submit %>
   <% end %>
 
-  <form accept-charset="UTF-8" action="/invite" method="post">
-    <input name="utf8" type="hidden" value="&#x2713;" />
-    <label for="q">Invite people:</label>
-    <input id="user" name="q" type="text" />
-    <input name="commit" type="submit" value="Submit" />
+
+  <form id="email-form" class="hidden", method="POST", action="<%= @community.id%>/invite", data-remote="true">
+
+   <div id="email-forms">
+     <input type="text" name="user"/><br><br>
+     <input type="text" name="user"/><br><br>
+   </div>
+
+   <input type="submit" value="Send Invitations" class="btn btn-primary"/>
+
   </form>
 
 <% else %>

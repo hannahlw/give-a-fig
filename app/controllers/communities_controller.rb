@@ -35,7 +35,6 @@ class CommunitiesController < ApplicationController
 
   def invite
     @community = Community.find(params["id"])
-    binding.pry
     if User.find_by(email: params["community"]["members"])
       @member = User.find_by(email: params["community"]["members"])
       session["member"]=@member
