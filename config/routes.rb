@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :food_items
 
   devise_for :users
@@ -11,9 +10,7 @@ Rails.application.routes.draw do
   resources :food_donations
   resources :communities
 
-
   resources :user_communities, only: [:create, :destroy]
 
-  get 'recipes/not_bad', to: 'recipes#not_bad'
-
+  post 'communities/:id/invite', to: 'communities#invite'
 end

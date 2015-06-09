@@ -5,7 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :user_communities
+
   has_many :communities, through: :user_communities
+  has_many :communities, :foreign_key => "admin_id"
+
   has_many :food_items, :foreign_key => "poster_id"
   has_many :food_items, :foreign_key => "claimer_id"
 end
