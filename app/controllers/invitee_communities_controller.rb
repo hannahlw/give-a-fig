@@ -1,0 +1,3 @@
+class InviteeCommunitiesController < ApplicationController
+  
+end

@@ -11,6 +11,7 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.create(strong_params)
+    @community.update(admin_id: current_user.id)
     @community.users << current_user
     redirect_to community_path(@community), notice: 'Community was successfully created.'
   end
@@ -33,6 +34,23 @@ class CommunitiesController < ApplicationController
       @community.save
       redirect_to community_path(@community)
     end
+  end
+
+  def invite
+    @community = Community.find(params["id"])
+    if User.find_by(email: params['user']['email'])
+      member = Invitee.create(email: params['user']['email'])
+     @community.invitees << member
+      MyMailer.add_existing_member(member, @community).deliver_now
+    else #user needs to sign up
+      member = Invitee.create(email: params['user']['email'])
+      @community.invitees << member
+      MyMailer.add_new_member(member, @community).deliver_now
+    end
+  end
+
+  def edit
+    @community = Community.find(params[:id])
   end
 
   private
