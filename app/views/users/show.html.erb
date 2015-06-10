@@ -28,6 +28,6 @@
 
   <ul>
     <% @user.claimed_food.each do |food| %>
-      <li><%= food.name %></li>
+      <li><%= food.name %> from <%= food.community.name %></li>
     <% end %>
   </ul>
