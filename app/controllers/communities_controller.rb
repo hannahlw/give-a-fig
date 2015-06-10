@@ -49,6 +49,13 @@ class CommunitiesController < ApplicationController
     end
   end
 
+  def ask_admin
+    @community = Community.find(params["id"])
+    @email = @community.admin.email
+    @requester_name = current_user.first_name
+    MyMailer.send_to_admin(@email, @community, @requester_name).deliver_now
+  end
+
   def edit
     @community = Community.find(params[:id])
   end

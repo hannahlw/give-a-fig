@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :user_communities, only: [:create, :destroy]
 
   post 'communities/:id/invite', to: 'communities#invite'
+  post 'communities/:id/ask_admin', to: 'communities#ask_admin'
 end

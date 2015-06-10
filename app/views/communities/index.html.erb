@@ -1,9 +1,15 @@
 <div class="container">
-<h1>All My Communities</h1>
+<h1>All Communities</h1>
 <ul>
 <% if user_signed_in? %>
-  <% current_user.communities.each do |community| %>
-    <li><%= link_to community.name, community_path(community) %></li>
+  <% @communities.each do |community| %>
+    <li><%= link_to community.name, community_path(community) %> -
+    <%= community.admin.first_name %> |
+    <form action="communities/<%= community.id%>/ask_admin" method="post" data-remote="true" style="width:200px;">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input class="reset btn btn-red" type="submit" value="Request Invitation"/>
+  </form>
+    </li>
   <% end %>
 <% end %>
 </ul>
@@ -11,4 +17,3 @@
 <div class="entire-footer">
   <%= render :partial => "layouts/footer" %>
 </div>
-
