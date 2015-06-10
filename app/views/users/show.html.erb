@@ -1,0 +1,27 @@
+<div id="container">
+  <h1> HELLO <%= @user.first_name %> </h1>
+</div>
+
+<h3>Communities:</h3>
+  <ul>
+    <% @user.my_communities.each do |community| %>
+      <li>
+      <%= link_to community.name, community %>
+      <% if @user.id == community.admin_id %>
+        You're an admin! Congrats
+      <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+<h2>Active Food:</h2>
+
+<h3>Food you've posted:</h3>
+  <ul>
+    <li></li>
+  </ul>
+
+<h3>Food you've claimed:</h3>
+  <ul>
+    <li></li>
+  </ul>

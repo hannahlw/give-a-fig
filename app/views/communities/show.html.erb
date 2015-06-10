@@ -7,25 +7,24 @@
 
 <% if user_signed_in? && @community.is_invitee?(current_user) %>
   <div class="row">
-  <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
-  <div class="col-md-7 col-sm-6">
-  <% if current_user %>
-    <% if member?(@community, current_user) %>
-     <%= form_for @community do |f| %>
-      <%= f.submit "Leave Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
-      <% end %>
-    <% else  %>
-      <%= form_for @community do |f|  %>
-      <%= f.submit "Join Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
+    <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
+    <div class="col-md-7 col-sm-6">
+      <% if current_user %>
+        <% if member?(@community, current_user) %>
+         <%= form_for @community, method: :update do |f| %>
+          <%= f.submit "Leave Community", id: "leave-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
+          <% end %>
+        <% else  %>
+          <%= form_for @community, method: :update do |f|  %>
+          <%= f.submit "Join Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <h1>Sign In</h1>
       <% end %>
     <% end %>
-  <% else %>
-    <h1>Sign In</h1>
-  <% end %>
-<% end %>
+  </div>
 </div>
-</div>
-  
 
 
 <% if @community.users.include?(current_user) %>
@@ -120,4 +119,3 @@
 
 
 <%= render :partial => "layouts/footer" %>
-

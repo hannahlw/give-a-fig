@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
     FoodItem.where("poster_id = ?", self.id)
   end
 
+  def my_communities
+    Community.joins(:user_communities).where("user_id = ?", self.id)
+  end
+
   def their_food
   end
 end

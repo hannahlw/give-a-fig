@@ -13,6 +13,7 @@ class CommunitiesController < ApplicationController
     @community = Community.create(strong_params)
     @community.update(admin_id: current_user.id)
     @community.users << current_user
+    @community.save
     redirect_to community_path(@community), notice: 'Community was successfully created.'
   end
 
@@ -31,6 +32,7 @@ class CommunitiesController < ApplicationController
       redirect_to community_path(@community)
     else
       @community.users << current_user
+      @user.communities << @community
       @community.save
       redirect_to community_path(@community)
     end
