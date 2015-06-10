@@ -1,8 +1,10 @@
 <div class="container">
-<h1>Join a New Community</h1>
+<h1>All My Communities</h1>
 <ul>
-<% @communities.each do |community| %>
-<li><%= link_to community.name, community_path(community) %></li>
+<% if user_signed_in? %>
+  <% current_user.communities.each do |community| %>
+    <li><%= link_to community.name, community_path(community) %></li>
+  <% end %>
 <% end %>
 </ul>
 </div>

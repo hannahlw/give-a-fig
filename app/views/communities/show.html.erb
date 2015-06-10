@@ -3,13 +3,9 @@
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
-  <% if user_signed_in? %>
-  <h3>All of your communities:</h3>
-  <ul>
-    <% current_user.communities.each do |community| %>
-      <li><%= link_to community.name, community_path(community) %></li>
-    <% end %>
-  </ul>
+
+  <% if @community.is_invitee?(current_user) %>
+    <h1><%= current_user.email %></h1>
   <% end %>
 
 <% if current_user %>
@@ -45,6 +41,24 @@
   <% end %>
 </ul>
 
+
+
+
+<% if @community.is_admin?(current_user) %>
+<center>
+<h1>Invite Your Community to This Group</h1>
+<hr>
+ <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
+    <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
+  </form>
+  <div id="messagesent" style="display: none;">
+    <h1>YOU SENT AN EMAIL</h1>
+  </div>
+</center>
+<% end %>
+
 <% if @community.is_user_or_admin?(current_user) %>
   <h3>Post a New Food Item</h3>
   <%= form_for FoodItem.new do |f| %>
@@ -58,21 +72,11 @@
   <%= f.hidden_field :community_id, value: @community.id %>
   <%= f.submit %>
   <% end %>
-<center>
-<h1>Invite Your Community to This Group</h1>
-<hr>
- <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
-    <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
-  </form>
-  <div id="messagesent" style="display: none;">
-    <h1>YOU SENT AN EMAIL</h1>
-  </div>
-</center>
 <% else %>
   <p>You must be a member of this community to see its posts.</p>
 <% end %>
 
 </div>
+<div class="entire-footer">
 <%= render :partial => "layouts/footer" %>
+</div>
