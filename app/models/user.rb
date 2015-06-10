@@ -12,8 +12,12 @@ class User < ActiveRecord::Base
   has_many :food_items, :foreign_key => "poster_id"
   has_many :food_items, :foreign_key => "claimer_id"
 
-  def my_food
+  def posted_food
     FoodItem.where("poster_id = ?", self.id)
+  end
+
+  def claimed_food
+    FoodItem.where("claimer_id = ?", self.id)
   end
 
   def my_communities

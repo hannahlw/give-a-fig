@@ -4,18 +4,17 @@
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
-
 <% if user_signed_in? && @community.is_invitee?(current_user) %>
   <div class="row">
     <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
     <div class="col-md-7 col-sm-6">
       <% if current_user %>
         <% if member?(@community, current_user) %>
-         <%= form_for @community, method: :update do |f| %>
+         <%= form_for @community, action: :update, method: :put do |f| %>
           <%= f.submit "Leave Community", id: "leave-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
           <% end %>
         <% else  %>
-          <%= form_for @community, method: :update do |f|  %>
+          <%= form_for @community, action: :update, method: :put do |f|  %>
           <%= f.submit "Join Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
           <% end %>
         <% end %>
@@ -26,10 +25,9 @@
   </div>
 </div>
 
-
 <% if @community.users.include?(current_user) %>
   <% User.all.each do |user| %>
-    <% if !user.my_food.where("community_id = ?", @community.id).empty? %>
+    <% if !user.posted_food.where("community_id = ?", @community.id).empty? %>
       <% if user == @user %>
         <div class="mine">
         <ul><h4>My Posted Foods</h4>
@@ -37,7 +35,7 @@
         <div class="theirs">
         <ul><h4>Posted by: <%= user.first_name %></h4>
       <% end %>
-        <% user.my_food.each do |food| %>
+        <% user.posted_food.each do |food| %>
           <% if food.community_id == @community.id %>
             <div class = "entire_food_item" id = "<%= food.id %>">
               <li><h5><%= food.name %></h5>
@@ -71,51 +69,45 @@
     <% end %>
   <% end %>
 
-
-<!-- form to submit an email -->
-<% if user_signed_in? %>
 <!-- form to create a food item -->
-<% if @community.is_user_or_admin?(current_user) %>
-    <h3>Post a New Food Item</h3>
-    <%= form_for FoodItem.new do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-      <%= f.label :quanity %>
-      <%= f.number_field :quantity %>
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-      <%= f.hidden_field :poster_id, value: @user.id %>
-      <%= f.hidden_field :community_id, value: @community.id %>
-      <%= f.submit %>
-    <% end %>
-<% else %>
-  <p>You must be a member of this community to see its posts.</p>
-<% end %>
+<% if user_signed_in? %>
+  <% if @community.is_user_or_admin?(current_user) %>
+      <h3>Post a New Food Item</h3>
+      <%= form_for FoodItem.new do |f| %>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+        <%= f.label :quanity %>
+        <%= f.number_field :quantity %>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+        <%= f.hidden_field :poster_id, value: @user.id %>
+        <%= f.hidden_field :community_id, value: @community.id %>
+        <%= f.submit %>
+      <% end %>
+  <% else %>
+    <p>You must be a member of this community to see its posts.</p>
+  <% end %>
 <% end %>
 </div>
-
 
 <% else %>
 
 <h3>Please join this community first!</h3>
-<% end %>
-<% if @community.is_admin?(current_user) %>
-<center>
-<h1>Invite Your Community to This Group</h1>
-<hr>
- <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
-    <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
-  </form>
-  <div id="messagesent" style="display: none;">
-    <h1>YOU SENT AN EMAIL</h1>
-  </div>
-</center>
-<% end %>
+  <% end %>
+  <% if @community.is_admin?(current_user) %>
+    <center>
+    <h1>Invite Your Community to This Group</h1>
+    <hr>
+    <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
+      <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
+    </form>
+    <div id="messagesent" style="display: none;">
+      <h1>YOU SENT AN EMAIL</h1>
+    </div>
+    </center>
+  <% end %>
 </div>
-
-
-
 
 <%= render :partial => "layouts/footer" %>

@@ -17,11 +17,17 @@
 <h2>Active Food:</h2>
 
 <h3>Food you've posted:</h3>
+
   <ul>
-    <li></li>
+    <% @user.posted_food.each do |food| %>
+      <li><%= food.name %></li>
+    <% end %>
   </ul>
 
 <h3>Food you've claimed:</h3>
+
   <ul>
-    <li></li>
+    <% @user.claimed_food.each do |food| %>
+      <li><%= food.name %></li>
+    <% end %>
   </ul>
