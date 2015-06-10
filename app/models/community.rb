@@ -16,12 +16,6 @@ class Community < ActiveRecord::Base
   end
 
   def is_invitee?(current_user)
-     # binding.pry
-    @invitees = Invitee.all
-    emails = []
-    @invitees.each do |email|
-      emails << email
-    end
-    emails.include?(current_user.email)
+   Invitee.find_by(email: current_user.email) 
   end
 end
