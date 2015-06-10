@@ -1,5 +1,20 @@
 <div class="container">
-  <h1>Community: <%= @community.name %></h1>
+  <div class="row">
+  <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
+  <div class="col-md-7 col-sm-6"><% if current_user %>
+  <% if member?(@community, current_user) %>
+   <%= form_for @community do |f| %>
+    <%= f.submit "Leave Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
+    <% end %>
+  <% else  %>
+    <%= form_for @community do |f|  %>
+    <%= f.submit "Join Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
+    <% end %>
+  <% end %>
+<% else %>
+  <h1>Sign In</h1>
+<% end %>
+</div></div>
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
@@ -13,38 +28,30 @@
   </ul>
   <%# end %> -->
 
-<% if current_user %>
-  <% if member?(@community, current_user) %>
-   <!-- <h1>Leave</h1> -->
-   <%= form_for @community, remote: true do |f|  %>
-    <%= f.submit "Leave", id: "join-button"  %>
-    <% end %>
-  <% else  %>
-    <h1>Join</h1>
-    <%= form_for @community, remote: true do |f|  %>
-    <%= f.submit "Join", id: "join-button"  %>
-    <% end %>
-  <% end %>
-<% else %>
-  <h1>Sign IN</h1>
-<% end %>
 
-
+<% if @community.users.include?(current_user) %>
   <% User.all.each do |user| %>
     <% if !user.my_food.where("community_id = ?", @community.id).empty? %>
     <% if user == @user %>
       <div class="mine">
-      <ul><h5>My Posted Foods</h5>
+      <ul><h4>My Posted Foods</h4>
     <% else %>
       <div class="theirs">
-      <ul><h5>Posted by: <%= user.first_name %></h5>
+      <ul><h4>Posted by: <%= user.first_name %></h4>
     <% end %>
       <% user.my_food.each do |food| %>
         <% if food.community_id == @community.id %>
-          <li><%= food.name %></li>
+          <li><h5><%= food.name %></h5>
+          <% if user != @user %>
+
+            <%= form_for food do |f|  %>
+            <%= f.submit "Claim Me!", id: "claim-button"  %>
+            <% end %>
+
+          <% end %></li>
           <ul>
-            <li><%= food.quantity %></li>
-            <li><%= food.description %></li>
+            <li>Quantity: <%= food.quantity %></li>
+            <li>Description: <%= food.description %></li>
           </ul>
         <% end %>
       <% end %>
@@ -53,39 +60,24 @@
     <% end %>
   <% end %>
 
-<!-- 
-<ul>
-  <%# FoodItem.all.each do |food|   %>
-  <%# if food.community_id == @community.id %>
-  <h5>Posted by: <%#= food.poster.first_name %></h5>
-  <li><%#= food.name %></li>
-  <ul>
-  <%# if food.quantity != nil %>
-    <li>Quantity of Item: <%#= food.quantity %></li>
-  <%# end %>
-  <%# if food.description != nil %>
-    <li>Description of Item: <%#= food.description %></li>
-  <%# end %>
-  </ul>
-  <%# end %>
-  <%# end %>
-</ul> -->
+  <h1>Post a New Food Item</h1>
+  <%= form_for FoodItem.new do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.hidden_field :poster_id, value: @user.id %>
+  <%= f.hidden_field :community_id, value: @community.id %>
+  <%= f.submit %>
+  <% end %>
 
-<h1>Post a New Food Item</h1>
-<%= form_for FoodItem.new do |f| %>
-<%= f.label :name %>
-<%= f.text_field :name %>
-<%= f.label :quantity %>
-<%= f.number_field :quantity %>
-<%= f.label :description %>
-<%= f.text_field :description %>
-<%= f.hidden_field :poster_id, value: @user.id %>
-<%= f.hidden_field :community_id, value: @community.id %>
+<% else %>
 
-<%= f.submit %>
+<h3>Please join this community first!</h3>
 <% end %>
-
-</div> 
+</div>
 <%= render :partial => "layouts/footer" %>
  
 

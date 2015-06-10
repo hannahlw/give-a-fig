@@ -1,8 +1,8 @@
 if ($("#join-button").size() !== 0) {
-$("#join-button").replaceWith('<input type="submit" name="commit" value="Leave" id="leave-button">');
+$("#join-button").replaceWith('<input type="submit" name="commit" value="Leave" id="leave-button", class="btn btn-primary", style="margin-top:20px; font-size:2rem;">');
 // $("form").append('<h1>YOU LEFT</h1>');
 }
 else{
-  $("#leave-button").replaceWith('<input type="submit" name="commit" value="Join" id="join-button">');
+  $("#leave-button").replaceWith('<input type="submit" name="commit" value="Join" id="join-button", class="btn btn-primary", style="margin-top:20px; font-size:2rem;">');
   // $("form").append('<h1>YOU JOINED</h1>');
 }

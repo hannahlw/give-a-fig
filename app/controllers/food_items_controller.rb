@@ -10,6 +10,11 @@ class FoodItemsController < ApplicationController
     redirect_to community_path(@community)
   end
 
+  def update
+  current_user
+  redirect_to community_path(@community)
+  end
+
   private
 
   def fooditems_params
