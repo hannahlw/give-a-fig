@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 20150610145117) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.integer  "community_id"
+    t.string   "status"
   end
 
   add_index "food_items", ["community_id"], name: "index_food_items_on_community_id", using: :btree

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :food_items
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   root 'dashboard#index'
 
