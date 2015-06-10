@@ -18,43 +18,46 @@
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
-<!-- Dont want to show all communities in show page -->
-<!--   <%# if user_signed_in? %>
-  <h3>All of your communities:</h3>
-  <ul>
-    <%# current_user.communities.each do |community| %>
-      <li><%#= link_to community.name, community_path(community) %></li>
-    <%# end %>
-  </ul>
-  <%# end %> -->
-
 
 <% if @community.users.include?(current_user) %>
   <% User.all.each do |user| %>
     <% if !user.my_food.where("community_id = ?", @community.id).empty? %>
-    <% if user == @user %>
-      <div class="mine">
-      <ul><h4>My Posted Foods</h4>
-    <% else %>
-      <div class="theirs">
-      <ul><h4>Posted by: <%= user.first_name %></h4>
-    <% end %>
-      <% user.my_food.each do |food| %>
-        <% if food.community_id == @community.id %>
-          <li><h5><%= food.name %></h5>
-          <% if user != @user %>
-
-            <%= form_for food do |f|  %>
-            <%= f.submit "Claim Me!", id: "claim-button"  %>
-            <% end %>
-
-          <% end %></li>
-          <ul>
-            <li>Quantity: <%= food.quantity %></li>
-            <li>Description: <%= food.description %></li>
-          </ul>
-        <% end %>
+      <% if user == @user %>
+        <div class="mine">
+        <ul><h4>My Posted Foods</h4>
+      <% else %>
+        <div class="theirs">
+        <ul><h4>Posted by: <%= user.first_name %></h4>
       <% end %>
+        <% user.my_food.each do |food| %>
+          <% if food.community_id == @community.id %>
+            <div class = "entire_food_item" id = "<%= food.id %>">
+              <li><h5><%= food.name %></h5>
+                <% if food.claimer_id == nil %>
+                  <% if user != @user %>
+                    <%= form_for food, remote:true do |f|  %>
+                    <%= f.submit "Claim Me!", id: "claim-button"  %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <% if user == @user %>
+                    <%= form_for food, method: :delete, remote:true do |f|  %>
+                    <%= f.submit "Swap Completed!", id: "destroy-button"  %>
+                    <% end %>
+                  <% end %>
+
+
+                  <p><strong>Status: claimed by <%= food.claimer.first_name %></strong></p>
+                <% end %>
+
+              </li>
+              <ul>
+                <li>Quantity: <%= food.quantity %></li>
+                <li>Description: <%= food.description %></li>
+              </ul>
+            </div>
+          <% end %>
+        <% end %>
         </ul>
         </div>
     <% end %>

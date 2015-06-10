@@ -1,0 +1,1 @@
+$("#edit_food_item_<%= @food.id %>").replaceWith("<p><strong>Status: claimed by <%= j @food.claimer.first_name %></strong></p>")

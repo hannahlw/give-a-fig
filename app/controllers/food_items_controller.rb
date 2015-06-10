@@ -11,8 +11,13 @@ class FoodItemsController < ApplicationController
   end
 
   def update
-  current_user
-  redirect_to community_path(@community)
+    @food = FoodItem.find(params[:id])
+    @food.update(claimer_id: current_user.id, status: "claimed")
+  end
+
+  def destroy
+    @food = FoodItem.find(params[:id])
+    @food.destroy
   end
 
   private
