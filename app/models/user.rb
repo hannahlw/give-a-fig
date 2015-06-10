@@ -8,4 +8,11 @@ class User < ActiveRecord::Base
   has_many :communities, through: :user_communities
   has_many :food_items, :foreign_key => "poster_id"
   has_many :food_items, :foreign_key => "claimer_id"
+
+  def my_food
+    FoodItem.where("poster_id = ?", self.id)
+  end
+
+  def their_food
+  end
 end

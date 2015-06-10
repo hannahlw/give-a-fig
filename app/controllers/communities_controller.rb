@@ -18,7 +18,6 @@ class CommunitiesController < ApplicationController
   def show
     @community = Community.find(params[:id])
     @user = current_user
-    # binding.pry
   end
 
   def update
@@ -26,14 +25,15 @@ class CommunitiesController < ApplicationController
     @user = current_user
     if @community.users.include?(current_user)
       @user_community = UserCommunity.find_by(community_id: @community.id, user_id: @user.id)
-      @user_community.destroy    
+      @user_community.destroy
+      current_user.my_food.destroy_all
+      redirect_to community_path(@community)
     else
       @community.users << current_user
-      @community.save    
-    end  
-    # binding.pry
+      @community.save
+      redirect_to community_path(@community)
+    end
   end
-
 
   private
 

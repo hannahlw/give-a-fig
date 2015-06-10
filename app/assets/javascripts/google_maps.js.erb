@@ -81,6 +81,7 @@ $(document).ready(function(){
   $(".zip_search").on('click', function(event) {
     event.preventDefault();
     $('#map-canvas').empty();
+    var zipcode = $("#zip_code").val()
 
     path = ("http://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode);
     $.get(path, function(data) {
