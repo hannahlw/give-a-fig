@@ -34,14 +34,15 @@ class CommunitiesController < ApplicationController
   end
 
   def invite
+    # binding.pry
     @community = Community.find(params["id"])
-    if User.find_by(email: params["community"]["members"])
-      @member = User.find_by(email: params["community"]["members"])
-      session["member"]=@member
-      MyMailer.add_existing_member(@member, @community).deliver_now
+    if User.find_by(email: params['user']['email'])
+      member = User.find_by(email: params['user']['email'])
+      # session["member"] = @member
+      MyMailer.add_existing_member(member, @community).deliver_now
     else #user needs to sign up
-      @member = User.new(email: params["community"]["members"])
-      MyMailer.add_new_member(@member, @community).deliver_now
+      member = User.new(email: params['user']['email'])
+      MyMailer.add_new_member(member, @community).deliver_now
     end
   end
 

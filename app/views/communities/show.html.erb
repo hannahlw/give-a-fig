@@ -51,26 +51,25 @@
   <%= f.label :name %>
   <%= f.text_field :name %>
   <%= f.label :quanity %>
-  <%= f.number_field :quanity %>
+  <%= f.number_field :quantity %>
   <%= f.label :description %>
   <%= f.text_field :description %>
   <%= f.hidden_field :poster_id, value: @user.id %>
   <%= f.hidden_field :community_id, value: @community.id %>
   <%= f.submit %>
   <% end %>
-
-
-  <form id="email-form" class="hidden", method="POST", action="<%= @community.id%>/invite", data-remote="true">
-
-   <div id="email-forms">
-     <input type="text" name="user"/><br><br>
-     <input type="text" name="user"/><br><br>
-   </div>
-
-   <input type="submit" value="Send Invitations" class="btn btn-primary"/>
-
+<center>
+<h1>Invite Your Community to This Group</h1>
+<hr>
+ <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
+    <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
   </form>
-
+  <div id="messagesent" style="display: none;">
+    <h1>YOU SENT AN EMAIL</h1>
+  </div>
+</center>
 <% else %>
   <p>You must be a member of this community to see its posts.</p>
 <% end %>

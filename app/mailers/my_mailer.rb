@@ -6,6 +6,8 @@ class MyMailer < Devise::Mailer
 
   def add_new_member(user, community)
     @community = community
+    @url = community_path(@community)
+    # binding.pry
     @email = user.email
     mail(to: @email, subject: "Hello, New Member!")
   end
