@@ -1,3 +1,20 @@
 // Place all the styles related to the Recipe controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ .scroll {
+  padding-top: 0px;
+  position:relative;
+  text-align: left;
+  width: 90%;
+  height: 150px;
+  overflow: scroll;
+} 
+
+.get-recipe {
+  font-size: 16px;
+  margin: 5px 0px;
+}
+
+.recipe-title {
+}

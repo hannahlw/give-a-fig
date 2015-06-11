@@ -2581,6 +2581,11 @@ body.boxed.img-5 {
 	padding-bottom:11px;
 	border-bottom:3px solid;
 }
+
+.block-heading-two h4 span{
+	padding-bottom:4px;
+	border-bottom:2px solid;
+}
 /* Heading #3 */
 .block-heading-three{
 	text-align:center;
@@ -6173,7 +6178,6 @@ body.boxed.img-5 {
 	height: 400px;
 	width: 100%;
 	background-attachment:fixed;
-	margin-top: 10px;
 	padding-top: 30px;
 }
 .quote-two .quote-two-content{

@@ -8,17 +8,19 @@
   <br><%= render 'form' %><br>
 
   <button type="button" id="add-more">Add another ingredient!</button>
+  <br>
+  <br>
 
   <% if @recipe_info == [] %>
     <hr>
     <h4>Sorry, your list of ingredients did not turn up with any recipes! Please try again with other ingredients.</h4>
   <% elsif @recipe_info != nil %>
+    <div id="container">
+    <div class="row">
       <% @recipe_info.each do |recipe_hash| %>
-        <div id="container">
-        <div class="row">
         <div class="col-md-4 col-sm-6">
-          <div class="block-heading-two">
-            <h3><span class="color"><%= recipe_hash[:name] %></span></h3>
+          <div class="block-heading-two recipe-title">
+            <h4><span class="color"><%= truncate(recipe_hash[:name], length: 40) %></span></h4>
           </div>
 
           <div class = "get-recipe">
@@ -26,20 +28,19 @@
           </div>
 
           <div class = "recipe-image">
-            <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 360px; height: 360px;" %>
+            <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 300px; height: 300px;" %>
           </div>
 
           <div class="item-ingred">
             <h4>Ingredient List: </h4>
-            <ul class="list-unstyled">
+            <ul class="scroll">
             <% recipe_hash[:ingredient].each do |ing| %>
               <li><%= ing %></li>
             <% end %>
             </ul>
           </div>
         </div>
-
-     <% end %>
+      <% end %>
    <% end %>
   </div>
   </div>
