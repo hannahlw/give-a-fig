@@ -1,13 +1,18 @@
-<div class="container">
 
-  <h1>Community: <%= @community.name %></h1>
-  <h5>Pickup site: <%= @community.pickup_site %></h5>
-  <h5>Tag(s): <%= @community.tag %></h5>
+<!-- page top -->
+  <div class="outer">
+    <div class="main-block">
+      <div class="page-heading-one">
+        <h1><%= @community.name %> Community</h1>
+        <p>Community Location: <%= @community.pickup_site %></p>
+        <p>Description of Community: <%= @community.tag %></p>
+      </div>
+    </div>
 
 
-<% if user_signed_in? && @community.is_invitee?(current_user) %>
-  <div class="row">
-    <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
+<!-- Button to Request Invite Or Leave -->
+<% if user_signed_in? && !@community.is_admin?(current_user) %>
+  <div class="row"> 
     <div class="col-md-7 col-sm-6">
       <% if current_user %>
         <% if member?(@community, current_user) %>
@@ -15,9 +20,10 @@
             <%= f.submit "Leave Community", id: "leave-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
           <% end %>
         <% else  %>
-          <%= form_for @community, action: :update, method: :put do |f|  %>
-            <%= f.submit "Join Community", id: "join-button", class: "btn btn-primary", style: "margin-top:20px; font-size:2rem;"  %>
-          <% end %>
+          <form action="<%= @community.id%>/ask_admin" method="post" data-remote="true" style="width:200px;   margin-left: 65%;">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <input class="reset btn btn-red" id = "join-button" type="submit" value="Request An Invitation to This Community"/>
+          </form>
         <% end %>
       <% else %>
         <h1>Sign In</h1>
@@ -25,8 +31,20 @@
     <% end %>
     </div>
   </div>
+</div>
+</div>
+<!-- Button to Request Invite Or Leave -->
+<!-- end page top -->
 
+<!-- page starter -->
+
+<div class="row"> 
+
+<div class="col-md-7 col-sm-8">
 <% if @community.users.include?(current_user) %>
+  <div class="block-heading-two">
+    <h3><span style= "border-color: #51d466;">Posted Food Items</span></h3>
+  </div>
   <% User.all.each do |user| %>
     <% if !user.posted_food.where("community_id = ?", @community.id).empty? %>
       <% if user == @user %>
@@ -39,7 +57,7 @@
         <% user.posted_food.each do |food| %>
           <% if food.community_id == @community.id %>
             <div class = "entire_food_item" id = "<%= food.id %>">
-              <li><h5><%= food.name %></h5>
+              <h3>Food Item: <%= food.name %></h3>
                 <% if food.claimer_id == nil %>
                   <% if user != @user %>
                     <%= form_for food, remote:true do |f|  %>
@@ -52,15 +70,15 @@
                     <%= f.submit "Swap Completed!", id: "destroy-button"  %>
                     <% end %>
                   <% end %>
-
-                  <p><strong>Status: claimed by <%= food.claimer.first_name %></strong></p>
+                 <p><strong>Status: claimed by <%= food.claimer.first_name %></strong></p>
                 <% end %>
-
               </li>
+              <h5>More Information:</h5>
               <ul>
                 <li>Quantity: <%= food.quantity %></li>
                 <li>Description: <%= food.description %></li>
               </ul>
+              <hr>
             </div>
           <% end %>
         <% end %>
@@ -68,29 +86,47 @@
         </div>
     <% end %>
   <% end %>
+</div>
 
   <!-- form to create a food item -->
   <% if user_signed_in? %>
-    <% if @community.is_user_or_admin?(current_user) %>
-        <h3>Post a New Food Item</h3>
+  <div class="col-md-5 col-sm-6">
+    <div class="block-heading-two">
+      <% if @community.is_user_or_admin?(current_user) %>
+          <h3><span style= "border-color: #51d466;">Post a New Food Item</span></h3>
+     </div>   
         <%= form_for FoodItem.new do |f| %>
-          <%= f.label :name %>
-          <%= f.text_field :name %>
+        <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <%= f.label :name, style: "display: inline-block;" %>
+          <%= f.text_field :name, id: "inputOne", class: "form-control", placeholder: "Name"%>
+        </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+        <div class="form-group">
           <%= f.label :quanity %>
-          <%= f.number_field :quantity %>
+          <%= f.number_field :quantity, class: "form-control", placeholder: "Quantity" %>
+        </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+        <div class="form-group">
           <%= f.label :description %>
-          <%= f.text_field :description %>
+          <%= f.text_field :description, class: "form-control", placeholder: "Description" %>
+        </div>
+        </div>
           <%= f.hidden_field :poster_id, value: current_user.id %>
           <%= f.hidden_field :community_id, value: @community.id %>
-          <%= f.submit %>
+        <div class="col-md-6 col-sm-6">
+        <div class="form-group">
+          <%= f.button "Post Food Item", class: "btn btn-color", style: "margin-top: 39%; margin-left: -35%;" %>
+        </div>
+        </div>
         <% end %>
-    <% else %>
-      <p>You must be a member of this community to see its posts.</p>
+      </div>   
     <% end %>
   <% end %>
-  <% else %>
-<h3>Please join this community first!</h3>
 <% end %>
+</div>
 </div>
 
 <!-- Admin Section -->
@@ -101,7 +137,7 @@
       <div class="divider-6"></div>
         <h1>ADMIN SECTION</h1>
 
-<!-- Send An Email Section -->
+<!-- Send An Invite Email Section -->
       <div class="panel panel-red">
       <div class="panel-heading">
         <h4 class="panel-title">Invite Your Community to This Group</h4>
@@ -122,7 +158,7 @@
       </div>
 
 
-<!-- requesters section -->
+<!-- requesters accept or reject section -->
      <div class="panel panel-lblue">
        <div class="panel-heading">
           <h4 class="panel-title">Poeple Who Have Requested to Join Your Community</h4>
@@ -144,7 +180,7 @@
             <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input type="hidden"  name="email"  value="<%= requester.email %>">
-              <input class="reset btn btn-red" type="submit" value="Accept"/>
+              <input class="reset btn btn-red" style="margin-left: 45%;" type="submit" value="Accept"/>
             </form>
           </div>
 
@@ -153,7 +189,8 @@
             <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input type="hidden"  name="email"  value="<%= requester.email %>">
-              <input class="reset btn btn-red" type="submit" value="Reject"/>
+              <input class="reset btn btn-red", style="  margin-top: -30%;
+  margin-left: 50%" type="submit" value="Reject"/>
             </form>
           </div>
         <% end %><!-- ends requester section -->
@@ -164,7 +201,4 @@
   </div>
 </div>
 </div>
-
-
-
-<%= render :partial => "layouts/footer" %>
+</div>

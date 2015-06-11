@@ -54,7 +54,6 @@ class CommunitiesController < ApplicationController
     @community = Community.find(params["id"])
     @community.requesters << @requester
     @community.save
-    binding.pry
     @email = @community.admin.email
     @requester_name = current_user.first_name
     MyMailer.send_to_admin(@email, @community, @requester_name).deliver_now
