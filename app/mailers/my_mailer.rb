@@ -7,7 +7,6 @@ class MyMailer < Devise::Mailer
   def add_new_member(user, community)
     @community = community
     @url = community_path(@community)
-    # binding.pry
     @email = user.email
     mail(to: @email, subject: "Hello, New Member!")
   end
@@ -16,5 +15,27 @@ class MyMailer < Devise::Mailer
     @community = community
     @email = user.email
     mail(to: @email, subject: "Hello, Existing Member!")
+  end
+
+  def send_to_admin(email, community, requester_name)
+    @community = community
+    @url = community_path(@community)
+    @email = email
+    @requester_name = requester_name
+    mail(to: @email, subject: "You have a request to join your community!")
+  end
+
+  def send_to_rejected(community, rejected)
+     @url = community_path
+     @rejected = rejected.email
+     @community = community
+     mail(to: @email, subject: "We're sorry this group is privite! Try Starting Your Own Community")
+  end
+
+  def send_to_accepted(accepted, community)
+    @community = community
+    @accepted = accepted.email
+    @url = community_path(@community)
+    mail(to: @email, subject: "")
   end
 end

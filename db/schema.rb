@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150610145117) do
+ActiveRecord::Schema.define(version: 20150610213023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20150610145117) do
     t.datetime "updated_at",  null: false
     t.integer  "admin_id"
   end
+
+  create_table "community_requesters", force: :cascade do |t|
+    t.integer  "requester_id"
+    t.integer  "community_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "community_requesters", ["community_id"], name: "index_community_requesters_on_community_id", using: :btree
+  add_index "community_requesters", ["requester_id"], name: "index_community_requesters_on_requester_id", using: :btree
 
   create_table "compost_sites", force: :cascade do |t|
     t.string   "name"
@@ -85,6 +95,12 @@ ActiveRecord::Schema.define(version: 20150610145117) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "requesters", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_communities", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "community_id"
@@ -115,6 +131,8 @@ ActiveRecord::Schema.define(version: 20150610145117) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "community_requesters", "communities"
+  add_foreign_key "community_requesters", "requesters"
   add_foreign_key "food_items", "communities"
   add_foreign_key "invitee_communities", "communities"
   add_foreign_key "invitee_communities", "invitees"
