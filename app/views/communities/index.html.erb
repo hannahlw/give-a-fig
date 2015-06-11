@@ -4,11 +4,7 @@
 <% if user_signed_in? %>
   <% @communities.each do |community| %>
     <li><%= link_to community.name, community_path(community) %> -
-    <%= community.admin.first_name %> |
-    <form action="communities/<%= community.id%>/ask_admin" method="post" data-remote="true" style="width:200px;">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input class="reset btn btn-red" type="submit" value="Request Invitation"/>
-  </form>
+    <%= community.admin.first_name %>
     </li>
   <% end %>
 <% end %>
