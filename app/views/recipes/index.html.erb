@@ -14,7 +14,8 @@
     <h4>Sorry, your list of ingredients did not turn up with any recipes! Please try again with other ingredients.</h4>
   <% elsif @recipe_info != nil %>
       <% @recipe_info.each do |recipe_hash| %>
-      
+        <div id="container">
+        <div class="row">
         <div class="col-md-4 col-sm-6">
           <div class="block-heading-two">
             <h3><span class="color"><%= recipe_hash[:name] %></span></h3>
@@ -40,5 +41,6 @@
 
      <% end %>
    <% end %>
-
+  </div>
+  </div>
 </div>
