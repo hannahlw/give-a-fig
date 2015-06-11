@@ -1,33 +1,44 @@
-<div id="container">
-  <h1> HELLO <%= @user.first_name %> </h1>
+<div class="container">
+<h1> Welcome <%= @user.first_name %> </h1>
 </div>
-
-<h3>Communities:</h3>
-  <ul>
-    <% @user.my_communities.each do |community| %>
-      <li>
-      <%= link_to community.name, community %>
-      <% if @user.id == community.admin_id %>
-        You're an admin! Congrats
-      <% end %>
+<h3 id="title"><%= @user.first_name %>'s Communities:</h3>
+<div id="container">
+<ul class="row" id="row-style">
+  <% @user.my_communities.each do |community| %>
+      <li class="col-md-4 col-sm-6"><span class="box-style">
+        <h3 id="title">
+          <%= link_to community.name, community %>
+          <% if @user.id == community.admin_id %>
+            | Admin
+          <% else %>
+            | Member
+          <% end %>
+        </h3>
+        <ul id="memberFoods" class="row" style="list-style:none;">
+          <li class="col-md-6">
+            <h5>Your listed foods:</h5>
+            <ul class="ul-style">
+              <% @user.posted_food.each do |food| %>
+                <% if food.community_id == community.id %>
+                  <li><%= food.name %></li>
+                  <% end %>
+              <% end %>
+            </ul>
+          </li>
+        
+          <li class="col-md-6">
+            <h5>Your claimed foods:</h5>
+            <ul class="ul-style">
+              <% @user.claimed_food.each do |food| %>
+                <% if food.community_id == community.id  %>
+                  <li><%= food.name %> from <%= food.community.name %></li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+        </ul><!-- memebersFood -->
+        </span>
       </li>
-    <% end %>
-  </ul>
-
-<h2>Active Food:</h2>
-
-<h3>Food you've posted:</h3>
-
-  <ul>
-    <% @user.posted_food.each do |food| %>
-      <li><%= food.name %></li>
-    <% end %>
-  </ul>
-
-<h3>Food you've claimed:</h3>
-
-  <ul>
-    <% @user.claimed_food.each do |food| %>
-      <li><%= food.name %> from <%= food.community.name %></li>
-    <% end %>
-  </ul>
+  <% end %>
+</ul>
+</div><!--container -->
