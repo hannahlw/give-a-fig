@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>*<%= @requester_name.upcase %> WANTS TO JOIN <%= @community.name.upcase %> COMMUNITY*</h1>
+    <p>
+      To Accept this request, click here:
+      <a href= "http://localhost:3000<%= @url%>"><%= @community.name %></a>
+
+    </p>
+    <p>
+    To Reject this request, click here:
+
+    </p>
+    <p>Thanks for administrating and have a great day!</p>
+  </body>
+</html>

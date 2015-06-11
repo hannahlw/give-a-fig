@@ -4,6 +4,8 @@ class Community < ActiveRecord::Base
   has_many :food_items, through: :users
   has_many :invitee_communities
   has_many :invitees, through: :invitee_communities
+  has_many :community_requesters
+  has_many :requesters, through: :community_requesters
 
   belongs_to :admin, :class_name => "User", :foreign_key => "admin_id"
 
@@ -17,5 +19,9 @@ class Community < ActiveRecord::Base
 
   def is_invitee?(current_user)
    Invitee.find_by(email: current_user.email) 
+  end
+
+  def is_requester?(current_user)
+    Requester.find_by(email: current_user.email)
   end
 end
