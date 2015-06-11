@@ -16,25 +16,27 @@
   <% elsif @recipe_info != nil %>
       <% @recipe_info.each do |recipe_hash| %>
       
-        <div class="block-heading-two">
-          <h3><span class="color"><%= recipe_hash[:name] %></span></h3>
-        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="block-heading-two">
+            <h3><span class="color"><%= recipe_hash[:name] %></span></h3>
+          </div>
 
-        <div class = "get-recipe">
-          <%= link_to "Get Recipe", recipe_hash[:link], :target => "_blank" %>
-        </div>
+          <div class = "get-recipe">
+            <%= link_to "Get Recipe", recipe_hash[:link], :target => "_blank" %>
+          </div>
 
-        <div class = "recipe-image">
-          <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 360px; height: 360px;" %>
-        </div>
+          <div class = "recipe-image">
+            <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 360px; height: 360px;" %>
+          </div>
 
-        <div class="item-ingred">
-          <h4>Ingredient List: </h4>
-          <ul class="list-unstyled">
-          <% recipe_hash[:ingredient].each do |ing| %>
-            <li><%= ing %></li>
-          <% end %>
-          </ul>
+          <div class="item-ingred">
+            <h4>Ingredient List: </h4>
+            <ul class="list-unstyled">
+            <% recipe_hash[:ingredient].each do |ing| %>
+              <li><%= ing %></li>
+            <% end %>
+            </ul>
+          </div>
         </div>
 
      <% end %>
