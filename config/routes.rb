@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :user_communities, only: [:create, :destroy]
 
   get '/users/profile', to: "users#show"
+  get '/learn_more', to: "dashboard#learn_more"
   post 'communities/:id/invite', to: 'communities#invite'
   post 'communities/:id/ask_admin', to: 'communities#ask_admin'
   

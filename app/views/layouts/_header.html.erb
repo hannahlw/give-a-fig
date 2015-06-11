@@ -1,16 +1,10 @@
  <!-- Header Starts -->
   <div class="header-2">
-
     <!-- Container -->
     <div class="container">
       <div class="row">
 
         <!-- Logo Section -->
-        <div class="col-md-2">
-          <div class="logo" style="margin-left: -70px; margin-top: -8px;">
-            <h1><a href="/"><img src="/assets//gallery/small/fig-color.png" alt="" style="width: 16%; margin-right: 10px;"/><i class="">Give-a-Fig</i></a></h1>
-          </div>
-        </div>
 
         <!-- Navigation Starts -->
         <div class="col-md-9">
@@ -21,11 +15,11 @@
                 <!-- Submenu -->
                 <ul>
                   <% if current_user %>
-                    <li><%= link_to "Start A Community", new_community_path %></a></li>
+                    <li><%= link_to "Start a new community", new_community_path %></a></li>
                   <% else %>
-                    <li><%= link_to "Start A Community", new_user_session_path %></a></li>
+                    <li><%= link_to "Start a new community", new_user_session_path %></a></li>
                   <% end %>
-                    <li><%= link_to"All My Communities", communities_path %></li>
+                    <li><%= link_to"View all communities", communities_path %></li>
                 </ul>
               </li>
 
@@ -46,9 +40,6 @@
                   <li>
                     <a href="/food_donations">Find a site near you</a>
                   </li>
-                  <li>
-                    <a href="/food_donations"></a>
-                  </li>
                 </ul>
               </li>
 
@@ -58,9 +49,6 @@
                   <!-- 2nd Level sub menu -->
                   <li>
                     <a href="/recipes">For what you have</a>
-                  </li>
-                  <li>
-                    <a href="/recipes/not_bad">For what's going bad</a>
                   </li>
                 </ul>
               </li>
@@ -74,27 +62,24 @@
                   <a href="/users/profile">View Profile</a>
                 </li>
                 <li>
-                  <a href="/users/profile">Edit Profile</a>
-                </li>
-                <li>
-                  <a href="/users/settings">Settings</a>
+                  <%= link_to "Settings", edit_user_registration_path %>
                 </li>
               </ul>
-              <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
             </li>
           <% else %>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <% end %>
         </ul>
       </div>
-    </div>
+
     <!-- Navigation ends -->
 
     <!-- Search section -->
     <div class="col-md-1">
       <div class="head-search pull-right">
-        <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
+        <a href="#" class="b-dropdown"><i class="fa fa-search square-1 rounded-1 bg-color white"></i></a>
         <div class="b-dropdown-block">
           <form role="form">
             <!-- Input Group -->
@@ -108,6 +93,7 @@
           </div>
         </div>
       </div>
+    </div>
         <!-- Search section ends -->
       <div class="clearfix"></div>
      </div>
