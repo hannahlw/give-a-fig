@@ -32,8 +32,10 @@ class MyMailer < Devise::Mailer
      mail(to: @email, subject: "We're sorry this group is privite! Try Starting Your Own Community")
   end
 
-  def send_to_accepted
+  def send_to_accepted(accepted, community)
     @community = community
+    @accepted = accepted.email
     @url = community_path(@community)
+    mail(to: @email, subject: "")
   end
 end

@@ -99,45 +99,77 @@
 
 
 <!-- Admin Section -->
-<% if @community.is_admin?(current_user) %>
 
-<center>
-<h1>ADMIN SECTION</h1>
+<div class="panel-group" id="accordion-alt2" style="margin-left: 20%; margin-right: 20%;">
+  <% if @community.is_admin?(current_user) %>
+    <center>
+      <div class="divider-6"></div>
+        <h1>ADMIN SECTION</h1>
 
-<h1>Invite Your Community to This Group</h1>
-<hr>
- <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-    <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
-    <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
-  </form>
-  <div id="messagesent" style="display: none;">
-    <h1>YOU SENT AN EMAIL</h1>
+<!-- Send An Email Section -->
+      <div class="panel panel-red">
+      <div class="panel-heading">
+        <h4 class="panel-title">Invite Your Community to This Group</h4>
+        <a data-toggle="collapse" data-parent="#accordion-alt2" href="#collapseOne-alt2" aria-expanded="true" class="">
+                       Collapsible Group Item #1</a>
+      </div>
+      <div id="collapseOne-alt2" class="panel-collapse collapse in" aria-expanded="true">         
+         <div class="panel-body">            
+           <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
+              <input class="reset btn btn-red" type="submit" value="Send Invitations"/>
+            </form>
+            <div id="messagesent" style="display: none;">
+              <h3>YOUR EMAIL SENT SUCCESSFULLY</h3>
+            </div>
+        </div>
+      </div>
+
+
+<!-- requesters section -->
+     <div class="panel panel-lblue">
+       <div class="panel-heading">
+          <h4 class="panel-title">Poeple Who Have Requested to Join Your Community</h4>
+          <a data-toggle="collapse" data-parent="#accordion-alt2" href="#collapseTwo-alt2" class="" aria-expanded="true">
+                       Collapsible Group Item #2</a>
+       </div>
+
+     <div id="collapseTwo-alt2" class="panel-collapse collapse in" aria-expanded="true">
+        <div class="panel-body">        
+         <% @community.requesters.each do |requester| %>
+           <div style="display: inline-block;">
+             <ul>
+               <li><%= requester.email %></li>
+             </ul>
+           </div>
+
+          <!-- accepted email form -->
+          <div style="display: inline-block;">
+            <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden"  name="email"  value="<%= requester.email %>">
+              <input class="reset btn btn-red" type="submit" value="Accept"/>
+            </form>
+          </div>
+
+          <!-- rejected email form -->
+          <div >
+            <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+              <input type="hidden"  name="email"  value="<%= requester.email %>">
+              <input class="reset btn btn-red" type="submit" value="Reject"/>
+            </form>
+          </div>
+        <% end %><!-- ends requester section -->
+       </div>
+      </div>  
+  </center>    
+  <% end %><!-- ends full admin section -->
   </div>
-</center>
-
- <!-- requesters -->
- <h1>ALLL REQUESTERS</h1>
-  <%# binding.pry %>
-   <% @community.requesters.each do |requester| %>
-     <ul>
-       <li><%= requester.email %></li>
-     </ul>
-      <!-- accept -->
-      <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden"  name="email"  value="<%= requester.email %>">
-        <input class="reset btn btn-red" type="submit" value="Accept"/>
-      </form>
-      <!-- reject -->
-      <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-        <input type="hidden"  name="email"  value="<%= requester.email %>">
-        <input class="reset btn btn-red" type="submit" value="Reject"/>
-      </form>
-   <% end %>
-<% end %>
 </div>
+</div>
+
 
 
 <%= render :partial => "layouts/footer" %>

@@ -41,19 +41,22 @@ class CommunitiesController < ApplicationController
     if User.find_by(email: params['user']['email'])
       member = Invitee.create(email: params['user']['email'])
      @community.invitees << member
+     @community.save
       MyMailer.add_existing_member(member, @community).deliver_now
     else #user needs to sign up
       member = Invitee.create(email: params['user']['email'])
       @community.invitees << member
+      @community.save
       MyMailer.add_new_member(member, @community).deliver_now
     end
   end
 
-  def ask_admin
-     binding.pry 
+  def ask_admin 
     @requester = Requester.create(email: current_user.email)
     @community = Community.find(params["id"])
     @community.requesters << @requester
+    @community.save
+    binding.pry
     @email = @community.admin.email
     @requester_name = current_user.first_name
     MyMailer.send_to_admin(@email, @community, @requester_name).deliver_now
@@ -64,18 +67,21 @@ class CommunitiesController < ApplicationController
   end
 
   def accept
-     binding.pry
     @community = Community.find(params["id"])
     @accepted = User.find_by(email: params['email'])
     @community.users << @accepted
+    @community.save
     MyMailer.send_to_accepted(@accepted, @community).deliver_now
   end
 
   def reject
+    binding.pry
     @community = Community.find(params["id"])
-    @rejectered = Requester.find_by(email: params['email'])
-    @rejectered.destroy
-    MyMailer.send_to_rejected(@rejectered, @community).deliver_now
+    @rejected = Requester.find_by(email: params['email'])
+    cr = CommunityRequester.find_by(requester_id: @rejected.id, community_id: @community.id)
+    cr.destroy
+    @rejected.destroy
+    MyMailer.send_to_rejected(@rejected, @community).deliver_now
   end
 
   private
