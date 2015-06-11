@@ -62,10 +62,7 @@
                   <a href="/users/profile">View Profile</a>
                 </li>
                 <li>
-                  <a href="/users/profile">Edit Profile</a>
-                </li>
-                <li>
-                  <a href="/users/settings">Settings</a>
+                  <%= link_to "Settings", edit_user_registration_path %>
                 </li>
               </ul>
               <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>

@@ -2246,10 +2246,16 @@ body.boxed.img-5 {
 	color: #666;
 }
 
+a.logo {
+  margin-top: 25px;
+  margin-bottom: -10px;
+}
+
 .logo {
   margin-top: 25px;
   margin-bottom: -10px;
 }
+
 /* Header two 	   */
 /* Logo            */
 /* Navigation menu */
@@ -6975,13 +6981,13 @@ body.bg-img{
 }
 .combined-form .nav-tabs{
 	border-bottom:0px;
-	text-align:center;
+/* 	text-align:center; */
 }
 .combined-form ul li a i{
 	display:block;
 	font-size:25px;
 	margin-bottom:8px;
-	text-align:center;
+	/* text-align:center; */
 }
 .combined-form ul li a{
 	background:#fff;
