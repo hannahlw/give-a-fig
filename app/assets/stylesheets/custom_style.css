@@ -2,6 +2,7 @@
 /* Square */
 .square-1 {
 	display:inline-block;
+	margin-top: 3px;
 	padding-top: 3px;
 	height: 20px;
 	width: 20px;
