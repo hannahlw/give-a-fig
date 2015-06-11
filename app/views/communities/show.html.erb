@@ -4,7 +4,6 @@
   <h5>Pickup site: <%= @community.pickup_site %></h5>
   <h5>Tag(s): <%= @community.tag %></h5>
 
-
 <% if user_signed_in? && @community.is_invitee?(current_user) %>
   <div class="row">
   <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
@@ -94,14 +93,17 @@
 <% end %>
 <% end %>
 </div>
-
-
 <% else %>
-
 <h3>Please join this community first!</h3>
 <% end %>
+
+
+<!-- Admin Section -->
 <% if @community.is_admin?(current_user) %>
+
 <center>
+<h1>ADMIN SECTION</h1>
+
 <h1>Invite Your Community to This Group</h1>
 <hr>
  <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
@@ -113,10 +115,29 @@
     <h1>YOU SENT AN EMAIL</h1>
   </div>
 </center>
+
+ <!-- requesters -->
+ <h1>ALLL REQUESTERS</h1>
+  <%# binding.pry %>
+   <% @community.requesters.each do |requester| %>
+     <ul>
+       <li><%= requester.email %></li>
+     </ul>
+      <!-- accept -->
+      <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden"  name="email"  value="<%= requester.email %>">
+        <input class="reset btn btn-red" type="submit" value="Accept"/>
+      </form>
+      <!-- reject -->
+      <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input type="hidden"  name="email"  value="<%= requester.email %>">
+        <input class="reset btn btn-red" type="submit" value="Reject"/>
+      </form>
+   <% end %>
 <% end %>
 </div>
-
-
 
 
 <%= render :partial => "layouts/footer" %>

@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   post 'communities/:id/invite', to: 'communities#invite'
   post 'communities/:id/ask_admin', to: 'communities#ask_admin'
+  
+  post 'communities/:id/accept', to: 'communities#accept'
+  post 'communities/:id/reject', to: 'communities#reject'
 end

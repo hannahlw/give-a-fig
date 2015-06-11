@@ -50,7 +50,10 @@ class CommunitiesController < ApplicationController
   end
 
   def ask_admin
+     binding.pry 
+    @requester = Requester.create(email: current_user.email)
     @community = Community.find(params["id"])
+    @community.requesters << @requester
     @email = @community.admin.email
     @requester_name = current_user.first_name
     MyMailer.send_to_admin(@email, @community, @requester_name).deliver_now
@@ -58,6 +61,21 @@ class CommunitiesController < ApplicationController
 
   def edit
     @community = Community.find(params[:id])
+  end
+
+  def accept
+     binding.pry
+    @community = Community.find(params["id"])
+    @accepted = User.find_by(email: params['email'])
+    @community.users << @accepted
+    MyMailer.send_to_accepted(@accepted, @community).deliver_now
+  end
+
+  def reject
+    @community = Community.find(params["id"])
+    @rejectered = Requester.find_by(email: params['email'])
+    @rejectered.destroy
+    MyMailer.send_to_rejected(@rejectered, @community).deliver_now
   end
 
   private
