@@ -73,7 +73,6 @@ class CommunitiesController < ApplicationController
   end
 
   def reject
-    binding.pry
     @community = Community.find(params["id"])
     @rejected = Requester.find_by(email: params['email'])
     cr = CommunityRequester.find_by(requester_id: @rejected.id, community_id: @community.id)
