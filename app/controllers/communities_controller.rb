@@ -11,23 +11,21 @@ class CommunitiesController < ApplicationController
 
   def create
     @community = Community.create(strong_params)
-    @community.update(admin_id: current_user.id)
     @community.users << current_user
+    @community.save
     redirect_to community_path(@community), notice: 'Community was successfully created.'
   end
 
   def show
     @community = Community.find(params[:id])
-    @user = current_user
   end
 
   def update
     @community = Community.find(params[:id])
-    @user = current_user
     if @community.users.include?(current_user)
-      @user_community = UserCommunity.find_by(community_id: @community.id, user_id: @user.id)
+      @user_community = UserCommunity.find_by(community_id: @community.id, user_id: current_user.id)
       @user_community.destroy
-      current_user.my_food.destroy_all
+      current_user.posted_food.destroy_all
       redirect_to community_path(@community)
     else
       @community.users << current_user
@@ -43,7 +41,7 @@ class CommunitiesController < ApplicationController
      @community.invitees << member
      @community.save
       MyMailer.add_existing_member(member, @community).deliver_now
-    else #user needs to sign up
+    else # user needs to sign up
       member = Invitee.create(email: params['user']['email'])
       @community.invitees << member
       @community.save
@@ -87,7 +85,6 @@ class CommunitiesController < ApplicationController
   private
 
   def strong_params
-    params.require(:community).permit(:name, :pickup_site, :tag)
+    params.require(:community).permit(:name, :pickup_site, :tag, :admin_id)
   end
-
 end

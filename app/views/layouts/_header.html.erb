@@ -1,39 +1,33 @@
-<!-- Header two Starts -->
-    <div class="header-2">
+ <!-- Header Starts -->
+  <div class="header-2">
 
-      <!-- Container -->
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <!-- Logo section -->
-            <div class="logo" style="margin-left: -70px; margin-top: -8px;">
-            <h1><a href="/"><img src="/assets//gallery/small/fig-color.png" alt="" style="width: 16%; margin-right: 10px;"/><i class="" style="">Give-a-Fig</i></a></h1>
+    <!-- Container -->
+    <div class="container">
+      <div class="row">
 
-
-              <!-- <h1><a href="/"><i class="fa fa-laptop"></i>Give-a-Fig</a></h1> -->
-            </div>
+        <!-- Logo Section -->
+        <div class="col-md-2">
+          <div class="logo" style="margin-left: -70px; margin-top: -8px;">
+            <h1><a href="/"><img src="/assets//gallery/small/fig-color.png" alt="" style="width: 16%; margin-right: 10px;"/><i class="">Give-a-Fig</i></a></h1>
           </div>
-          <div class="col-md-9">
+        </div>
 
-            <!-- Navigation starts.  -->
-            <div class="navy">
-              <ul>
-                <!-- Main menu -->
-
-                <li><a href="/communities">Community</a>
-                  <!-- Submenu -->
-                  <ul>
-                    <!-- 2nd Level sub menu -->
-                    
-                    <% if current_user %>
-                    <li><%= link_to"Join A Community", communities_path %></li>
-                      <li><%= link_to "Start A Community", new_community_path %></a></li>
-                    <% else %>
-                    <li><%= link_to"Join A Community", new_user_session_path %></li>
-                      <li><%= link_to "Start A Community", new_user_session_path %></a></li>
-                    <% end %>
-                  </ul>
-                </li>
+        <!-- Navigation Starts -->
+        <div class="col-md-9">
+          <div class="navy">
+            <ul>
+              <!-- Main menu -->
+              <li><a href="#">Community</a>
+                <!-- Submenu -->
+                <ul>
+                  <% if current_user %>
+                    <li><%= link_to "Start A Community", new_community_path %></a></li>
+                  <% else %>
+                    <li><%= link_to "Start A Community", new_user_session_path %></a></li>
+                  <% end %>
+                    <li><%= link_to"All My Communities", communities_path %></li>
+                </ul>
+              </li>
 
               <li><a href="/compost_sites">Compost Sites</a>
                 <!-- Submenu -->
@@ -45,85 +39,78 @@
                 </ul>
               </li>
 
-            <li><a href="/food_donations">Food Donations</a>
-              <!-- Submenu -->
-              <ul>
-                <!-- 2nd Level sub menu -->
-                <li>
-                  <a href="/food_donations">Find a site near you</a>
-                </li>
-                <li>
-                  <a href="/food_donations"></a>
-                </li>
-              </ul>
-            </li>
+              <li><a href="/food_donations">Food Donations</a>
+                <!-- Submenu -->
+                <ul>
+                  <!-- 2nd Level sub menu -->
+                  <li>
+                    <a href="/food_donations">Find a site near you</a>
+                  </li>
+                  <li>
+                    <a href="/food_donations"></a>
+                  </li>
+                </ul>
+              </li>
 
-            <li><a href="/recipes">Recipes</a>
-              <!-- Submenu -->
-              <ul>
-                <!-- 2nd Level sub menu -->
-                <li>
-                  <a href="/recipes">For what you have</a>
-                </li>
-                <li>
-                  <a href="/recipes/not_bad">For what's going bad</a>
-                </li>
-              </ul>
-            </li>
-
-            <li><a href="/about">About</a></li>
-              <!-- Submenu -->
-              <ul>
-                <!-- 2nd Level sub menu -->
-                <li>
-                  <a href="#"></a>
-                </li>
-                <li>
-              <li>
-            </ul>
-          </li>
+              <li><a href="/recipes">Recipes</a>
+                <!-- Submenu -->
+                <ul>
+                  <!-- 2nd Level sub menu -->
+                  <li>
+                    <a href="/recipes">For what you have</a>
+                  </li>
+                  <li>
+                    <a href="/recipes/not_bad">For what's going bad</a>
+                  </li>
+                </ul>
+              </li>
 
           <% if user_signed_in? %>
-            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-            <li>Logged In As : <%= current_user.first_name %></li>
+            <li><a href="/users/profile">Welcome, <%= current_user.first_name %></a>
+              <!-- Submenu -->
+              <ul>
+                <!-- 2nd Level sub menu -->
+                <li>
+                  <a href="/users/profile">View Profile</a>
+                </li>
+                <li>
+                  <a href="/users/profile">Edit Profile</a>
+                </li>
+                <li>
+                  <a href="/users/settings">Settings</a>
+                </li>
+              </ul>
+              <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            </li>
           <% else %>
             <li><%= link_to "Sign In", new_user_session_path %></li>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <% end %>
-
         </ul>
       </div>
-</ul>
-        <!-- Navigation ends -->
+    </div>
+    <!-- Navigation ends -->
 
-          </div>
-
-          <div class="col-md-1">
-
-            <!-- Search section -->
-            <div class="head-search pull-right">
-              <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
-              <div class="b-dropdown-block">
-                <form role="form">
-                  <!-- Input Group -->
-                  <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Type Something">
-                    <span class="input-group-btn">
-                      <button class="btn btn-color" type="button">Search</button>
-                    </span>
-                  </div>
-                </form>
+    <!-- Search section -->
+    <div class="col-md-1">
+      <div class="head-search pull-right">
+        <a href="#" class="b-dropdown"><i class="fa fa-search square-2 rounded-1 bg-color white"></i></a>
+        <div class="b-dropdown-block">
+          <form role="form">
+            <!-- Input Group -->
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Type Something">
+              <span class="input-group-btn">
+                <button class="btn btn-color" type="button">Search</button>
+                </span>
               </div>
-            </div>
-            </div>
-            <!-- Search section ends -->
-            <div class="clearfix"></div>
-
+            </form>
           </div>
-
         </div>
       </div>
-    </div>
-
-
-    <!-- Header two ends -->
+        <!-- Search section ends -->
+      <div class="clearfix"></div>
+     </div>
+  </div>
+</div>
+<!-- Navbar ends —>

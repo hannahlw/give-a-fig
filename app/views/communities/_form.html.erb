@@ -8,5 +8,7 @@
   <%= f.label :tag %>:
   <%= f.text_field :tag %><br>
 
+  <%= f.hidden_field :admin_id, value: current_user.id %>
+
   <%= f.submit %>
 <% end %>
