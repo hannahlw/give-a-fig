@@ -5,7 +5,7 @@
   <h5>Tag(s): <%= @community.tag %></h5>
 
 
-<% if user_signed_in? && @community.is_invitee?(current_user) %>
+<% if user_signed_in? %>
   <div class="row">
     <div class="col-md-5 col-sm-6"><h1>Community: <%= @community.name %></h1></div>
     <div class="col-md-7 col-sm-6">
@@ -22,9 +22,9 @@
       <% else %>
         <h1>Sign In</h1>
       <% end %>
-    <% end %>
     </div>
   </div>
+<% end %>
 
 <% if @community.users.include?(current_user) %>
   <% User.all.each do |user| %>
