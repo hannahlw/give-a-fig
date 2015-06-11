@@ -15,11 +15,11 @@
                 <!-- Submenu -->
                 <ul>
                   <% if current_user %>
-                    <li><%= link_to "Start A Community", new_community_path %></a></li>
+                    <li><%= link_to "Start a new community", new_community_path %></a></li>
                   <% else %>
-                    <li><%= link_to "Start A Community", new_user_session_path %></a></li>
+                    <li><%= link_to "Start a new community", new_user_session_path %></a></li>
                   <% end %>
-                    <li><%= link_to"All Communities", communities_path %></li>
+                    <li><%= link_to"View all communities", communities_path %></li>
                 </ul>
               </li>
 
@@ -65,10 +65,10 @@
                   <%= link_to "Settings", edit_user_registration_path %>
                 </li>
               </ul>
-              <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+              <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
             </li>
           <% else %>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Log In", new_user_session_path %></li>
             <li><%= link_to "Sign Up", new_user_registration_path %></li>
           <% end %>
         </ul>

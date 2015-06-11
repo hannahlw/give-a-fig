@@ -2259,13 +2259,14 @@ a.logo {
 /* Header two 	   */
 /* Logo            */
 /* Navigation menu */
-.nav-container{
-  text-align: center;
-  align-content: center;
-}
+
 .header-2 {
 	padding: 15px 0px;
   text-align: center;
+}
+
+.actions {
+	margin-top: 3px;
 }
 
 /* .header-2 .logo {
