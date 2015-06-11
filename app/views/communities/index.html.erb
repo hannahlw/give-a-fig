@@ -1,15 +1,32 @@
 <div class="container">
-<h1>All Communities</h1>
-<ul>
-<% if user_signed_in? %>
-  <% @communities.each do |community| %>
-    <li><%= link_to community.name, community_path(community) %> -
-    <%= community.admin.first_name %>
-    </li>
-  <% end %>
-<% end %>
-</ul>
+  <h1>All Communities</h1>
+  <div id="container">
+    <ul class="row" id="row-style">
+      <% if user_signed_in? %>
+        <% @communities.each do |community| %>
+          <li class="col-md-4 col-sm-6"><span class="box-style">
+            <h1 id="title"><%= link_to community.name, community_path(community) %></h1>
+            <ul class="row" style="list-style:none;">
+              <li>
+                <h3>Pickup Site:</h3>
+                <ul class="ul-style">
+                  <li><h4><%= community.pickup_site %></h4></li>
+                </ul>
+              </li>
+              <li>
+                <h3>Description:</h3>
+                <ul class="ul-style">
+                  <li><h4><%= community.tag %></h4></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
 </div>
+
 <div class="entire-footer">
   <%= render :partial => "layouts/footer" %>
 </div>
