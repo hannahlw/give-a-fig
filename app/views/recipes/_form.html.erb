@@ -1,9 +1,11 @@
 <div class="form-group" style="width: 50%; margin-left: 25%;">
 <%= form_tag("/recipes", id: "add-field", method: "get") do %>
 <%= label_tag :ingredients, "Add Ingredients:" %><br>
-<%= text_field_tag "ingredients[]", nil, :placeholder => 'Enter ingredient...', class: "form-control" %><br>
-<%= text_field_tag "ingredients[]", nil, :placeholder => 'Enter ingredient...', class: "form-control" %><br>
-<%= text_field_tag "ingredients[]", nil, :placeholder => 'Enter ingredient...', class: "form-control", id: "last" %><br>
+<div class = "ing" >
+  <%= text_field_tag "ingredients[]", nil, :placeholder => 'Enter ingredient...', class: "form-control" %><br>
+  <%= text_field_tag "ingredients[]", nil, :placeholder => 'Enter ingredient...', class: "form-control" %><br>
+  <%= text_field_tag "ingredients[]", nil, :placeholder => 'Enter ingredient...', class: "form-control" %><br>
+</div>
 <%= submit_tag("Find Recipes", class: "btn btn-color", style: " ") %>
 <button type="button" id="add-more" class="btn btn-color " style="">Add another ingredient!</button>
 <% end %>
