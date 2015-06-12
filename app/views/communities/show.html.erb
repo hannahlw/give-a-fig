@@ -19,6 +19,10 @@
           <%= form_for @community, action: :update, method: :put do |f| %>
             <%= f.submit "Leave Community", id: "leave-button", class: "btn btn-green", style: " font-size: 0.9em;"  %>
           <% end %>
+          <% elsif @community.is_invitee?(current_user) %>
+          <%= form_for @community, action: :update, method: :put do |f| %>
+          <%= f.submit "Join Community", id: "invitee-button", class: "btn btn-green", style: " font-size: 0.9em;"  %>
+          <% end %>
         <% else  %>
           <form action="<%= @community.id%>/ask_admin" method="post" data-remote="true" style="width:200px;">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
