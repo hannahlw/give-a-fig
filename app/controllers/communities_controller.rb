@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :destroy]
+  before_action :authenticate_user!, only: [:new, :destroy, :show]
 
   def index
     @communities = Community.all
@@ -22,7 +22,6 @@ class CommunitiesController < ApplicationController
   end
 
   def update
-    binding.pry
     @community = Community.find(params[:id])
     if @community.users.include?(current_user)
       @user_community = UserCommunity.find_by(community_id: @community.id, user_id: current_user.id)

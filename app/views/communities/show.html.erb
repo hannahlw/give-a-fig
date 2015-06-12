@@ -41,7 +41,7 @@
 
 <div class="row"> 
   <div class="col-md-7 col-sm-8">
-    <% if @community.users.include?(current_user) %>
+    <% if @community.users.include?(current_user) || @community.is_admin?(current_user) %>
       <div class="block-heading-two">
         <h3><span style= "border-color: #51d466;">Posted Food Items</span></h3>
       </div>
@@ -73,16 +73,11 @@
                      <p><strong>Status: claimed by <%= food.claimer.first_name %></strong></p>
                     <% end %>
                   </li>
-
-                  
-                
                   <ul>
                     <li>Quantity: <%= food.quantity %></li>
                     <li>Description: <%= food.description %></li>
                   </ul>
                   <hr>
-                 
-
                 </div>
               <% end %>
             <% end %>
@@ -133,7 +128,7 @@
   </div>
 </div>
 
-<!-- Admin Section —>
+<!-- Admin Section -->
 
 
 <div class="panel-group container" id="accordion-alt2">
@@ -170,36 +165,38 @@
         <div class="panel-body"> 
 
          <% @community.requesters.each do |requester| %>
-         <div id="requester-div"> 
-           <div style="display: inline-block;">
-             <ul>
-               <li><%= requester.email %></li>
-             </ul>
-           </div>
+         <div class="container">
+           <div class="row">
+             <div class="col-md-4">
+               <ul>
+                 <li style=" list-style: none; "><%= requester.email %></li>
+               </ul>
+             </div>
 
-          <!-- accepted email form -->
-          <div style="display: inline-block;">
-            <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
-              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <input type="hidden"  name="email"  value="<%= requester.email %>">
-              <input class="reset btn btn-red" style="margin-left: 100%;" type="submit" value="Accept"/>
-            </form>
-            <!-- <div class="acceptmessage" style="display: none;">
-              <h3>Accepted Message Sent</h3>
-            </div> -->
-          </div>
+            <!-- accepted email form -->
+            <div class="col-md-4">
+              <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <input type="hidden"  name="email"  value="<%= requester.email %>">
+                <input class="reset btn btn-red" type="submit" value="Accept"/>
+              </form>
+              <!-- <div class="acceptmessage" style="display: none;">
+                <h3>Accepted Message Sent</h3>
+              </div> -->
+            </div>
 
-          <!-- rejected email form -->
-          <div >
-            <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
-              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-              <input type="hidden"  name="email"  value="<%= requester.email %>">
-              <input class="reset btn btn-red", id="accept-button" style="  margin-top: -30%; margin-left: 70%" type="submit" value="Reject"/>
-            </form>
-            <!-- <div class="rejectmessage" style="display: none;">
-              <h3>Rejected Message Sent</h3>
-            </div> -->
-          </div>
+            <!-- rejected email form -->
+              <div class="col-md-4">
+                <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
+                  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                  <input type="hidden"  name="email"  value="<%= requester.email %>">
+                  <input class="reset btn btn-red", id="accept-button" style="" type="submit" value="Reject"/>
+                </form>
+                <!-- <div class="rejectmessage" style="display: none;">
+                  <h3>Rejected Message Sent</h3>
+                </div> -->
+              </div>
+            </div>
           </div>
         <% end %><!-- ends requester section -->
        </div>
@@ -215,5 +212,6 @@
 <br>
 <br>
 <br>
+
 
 <%= render :partial => "layouts/footer" %>
