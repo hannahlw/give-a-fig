@@ -13,7 +13,7 @@
               <!-- Main menu -->
               <li><a href="#">Community</a>
                 <!-- Submenu -->
-                <ul>
+                <ul class="submenu">
                   <% if current_user %>
                     <li><%= link_to "Start a new community", new_community_path %></a></li>
                   <% else %>
@@ -25,7 +25,7 @@
 
               <li><a href="/compost_sites">Compost Sites</a>
                 <!-- Submenu -->
-                <ul>
+                <ul class="submenu">
                   <!-- 2nd Level sub menu -->
                   <li>
                     <a href="/compost_sites">Find a site near you</a>
@@ -45,7 +45,7 @@
 
               <li><a href="/recipes">Recipes</a>
                 <!-- Submenu -->
-                <ul>
+                <ul class="submenu">
                   <!-- 2nd Level sub menu -->
                   <li>
                     <a href="/recipes">For what you have</a>
@@ -53,10 +53,14 @@
                 </ul>
               </li>
 
+              <li><a href="/learn_more">Learn More</a>
+              </li>
+
+
           <% if user_signed_in? %>
             <li><a href="/users/profile">Welcome, <%= current_user.first_name %></a>
               <!-- Submenu -->
-              <ul>
+              <ul class="submenu">
                 <!-- 2nd Level sub menu -->
                 <li>
                   <a href="/users/profile">View Profile</a>

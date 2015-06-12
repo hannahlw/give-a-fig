@@ -1,6 +1,5 @@
 <div class="container">
  <h2>Don't throw away that food item you don't know how to cook with! Use are recipe generator to find great recipes with that item. Simply type in the ingredients you have in you house that you want to cook with and we will give you some recipe ideas.</h2>
-    <%= render partial: 'layouts/restaurantcarousel' %>
 
   <div class="block-heading-two">
     <h3><span>Find a Recipe For Ingredients You Already Have</span></h3>
@@ -9,35 +8,40 @@
   <br><%= render 'form' %><br>
 
   <button type="button" id="add-more">Add another ingredient!</button>
+  <br>
+  <br>
 
   <% if @recipe_info == [] %>
     <hr>
     <h4>Sorry, your list of ingredients did not turn up with any recipes! Please try again with other ingredients.</h4>
   <% elsif @recipe_info != nil %>
+    <div id="container">
+    <div class="row">
       <% @recipe_info.each do |recipe_hash| %>
-      
-        <div class="block-heading-two">
-          <h3><span class="color"><%= recipe_hash[:name] %></span></h3>
-        </div>
+        <div class="col-md-4 col-sm-6">
+          <div class="block-heading-two recipe-title">
+            <h4><span class="color"><%= truncate(recipe_hash[:name], length: 40) %></span></h4>
+          </div>
 
-        <div class = "get-recipe">
-          <%= link_to "Get Recipe", recipe_hash[:link], :target => "_blank" %>
-        </div>
+          <div class = "get-recipe">
+            <%= link_to "Get Recipe", recipe_hash[:link], :target => "_blank" %>
+          </div>
 
-        <div class = "recipe-image">
-          <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 360px; height: 360px;" %>
-        </div>
+          <div class = "recipe-image">
+            <%= image_tag "#{recipe_hash[:image]}", class: "img-responsive img-thumbnail", style: "width: 300px; height: 300px;" %>
+          </div>
 
-        <div class="item-ingred">
-          <h4>Ingredient List: </h4>
-          <ul class="list-unstyled">
-          <% recipe_hash[:ingredient].each do |ing| %>
-            <li><%= ing %></li>
-          <% end %>
-          </ul>
+          <div class="item-ingred">
+            <h4>Ingredient List: </h4>
+            <ul class="scroll">
+            <% recipe_hash[:ingredient].each do |ing| %>
+              <li><%= ing %></li>
+            <% end %>
+            </ul>
+          </div>
         </div>
-
-     <% end %>
+      <% end %>
    <% end %>
-
+  </div>
+  </div>
 </div>
