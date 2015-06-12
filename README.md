@@ -1,4 +1,4 @@
-<center><a href="http://tinypic.com?ref=2nk91" target="_blank"><img src="http://i58.tinypic.com/2nk91.png" border="0" height="250" width="250"></a><br></center>
+<center><a href="http://tinypic.com?ref=2nk91" target="_blank"><img src="http://i58.tinypic.com/2nk91.png" border="0" height="250" width="300"></a><br></center>
 
 ## Description
 Social hub for community food-sharing and resources to eliminate food waste by putting it to use. 
