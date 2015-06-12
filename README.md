@@ -1,40 +1,23 @@
-# Give A Fig
+<center><a href="http://tinypic.com?ref=2nk91" target="_blank"><img src="http://i58.tinypic.com/2nk91.png" border="0" height="250" width="290"></a><br></center>
 
 ## Description
-
-Add a short description of your app.
-
-## Screenshots
-
-Add some spiffy screenshots of your app here.
-
-## Background
-
-Why did you want to make this app? What was your development process
-like?
+Social hub for community food-sharing and resources to eliminate food waste by putting it to use. 
 
 ## Features
-
-Bullet point some of the key features of your app here.
+•	User-created communities for posting and sharing food<br>
+•	Search by location or zip to find compost sites and food donation drop-offs<br>
+•	Recipe search for single or multiple ingredients.<br>
+•	Email notifications and invitation system for users and groups<br>
+•	Utilizes NYC Open Data, Google Maps API, Yummly API<br>
 
 ## Usage
-
-How do users use your app?
-
-## Development/Contribution
-
-Explain how people can contribute to your app. How should they write tests?
-Any things in particular you'd like to see in pull requests?
+<a href="https://give-a-fig.herokuapp.com">Create an account</a> on our Heroku app.
 
 ## Future
+Expanded community features such as hosting dinners, composting, food drives. 
 
-What features are you currently working on? Only mention things that you
-actually are implementing. No pie-in-the-sky-never-gonna-happen stuff.
-
-## Author
-
-Link to your blog, twitter, etc!
+## Authors
+Jon Tow, Hannah Westheimer, Stefania Sicurelli, Summer Min
 
 ## License
-
 Give A Fig is MIT Licensed. See LICENSE for details.
