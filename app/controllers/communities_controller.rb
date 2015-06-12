@@ -18,9 +18,11 @@ class CommunitiesController < ApplicationController
 
   def show
     @community = Community.find(params[:id])
+    @user = current_user
   end
 
   def update
+    binding.pry
     @community = Community.find(params[:id])
     if @community.users.include?(current_user)
       @user_community = UserCommunity.find_by(community_id: @community.id, user_id: current_user.id)
@@ -72,11 +74,12 @@ class CommunitiesController < ApplicationController
   end
 
   def reject
-    binding.pry
     @community = Community.find(params["id"])
     @rejected = Requester.find_by(email: params['email'])
+    if 
     cr = CommunityRequester.find_by(requester_id: @rejected.id, community_id: @community.id)
     cr.destroy
+  end
     @rejected.destroy
     MyMailer.send_to_rejected(@rejected, @community).deliver_now
   end

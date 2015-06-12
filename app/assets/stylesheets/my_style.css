@@ -13,3 +13,37 @@
   height: 250px;
   overflow: scroll;
 }
+
+#title {
+    text-align: center;
+}
+
+#float-left {
+  width: 40%;
+  float: left;
+}
+
+#float-right {
+  width: 40%;
+  float: right;
+}
+
+.box-style {
+  display: block;
+  margin: 10px;
+  background-color: #f3f3f3;
+  border-radius: 20px;
+  min-height: 170px;
+  padding: 10px;
+  padding-bottom: 30px;
+}
+
+.ul-style {
+  padding-left: 0px;
+}
+
+#row-style {
+  list-style: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
