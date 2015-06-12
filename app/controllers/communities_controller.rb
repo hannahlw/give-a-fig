@@ -1,5 +1,5 @@
 class CommunitiesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :destroy]
+  before_action :authenticate_user!, only: [:new, :destroy, :show]
 
   def index
     @communities = Community.all
@@ -18,6 +18,7 @@ class CommunitiesController < ApplicationController
 
   def show
     @community = Community.find(params[:id])
+    @user = current_user
   end
 
   def update
