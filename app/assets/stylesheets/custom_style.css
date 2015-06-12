@@ -25,6 +25,12 @@ a.logo {
 /* Logo            */
 /* Navigation menu */
 
+.lobster {
+	font-family: 'Lobster Two', cursive;
+	text-align: center;
+	color: #fffafa;
+}
+
 .header-2 {
 	padding: 15px 0px;
   text-align: center;
