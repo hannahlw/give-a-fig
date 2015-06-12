@@ -40,9 +40,9 @@
 <!-- page starter -->
 
 <div class="row"> 
-  <div class="col-md-7 col-sm-8">
+  <div class="col-md-5 col-sm-8">
     <% if @community.users.include?(current_user) || @community.is_admin?(current_user) %>
-      <div class="block-heading-two">
+      <div class="block-heading-two" style= "text-align:center;">
         <h3><span style= "border-color: #51d466;">Posted Food Items</span></h3>
       </div>
       <% User.all.each do |user| %>
@@ -87,10 +87,14 @@
       <% end %>
     </div>
 
+    <div class="col-md-1 col-sm-6">
+
+    </div>
+
       <!-- form to create a food item -->
       <% if user_signed_in? %>
-      <div class="col-md-5 col-sm-6">
-        <div class="block-heading-two">
+      <div class="col-md-6 col-sm-6">
+        <div class="block-heading-two" style= "text-align:center;">
           <% if @community.is_user_or_admin?(current_user) %>
               <h3><span style= "border-color: #51d466;">Post a New Food Item</span></h3>
          </div>   
