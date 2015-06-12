@@ -6,7 +6,7 @@ $( document ).ready(function() {
       alert("Maximum limit of ingredients is 5!");
     }
     else {
-      $("<input type='text' name='ingredients[]'' id='ingredients_'>").insertAfter("#ingredients_:last");
+       $("<input type='text' name='ingredients[]' id='ingredients_' placeholder='Enter ingredient...' class='form-control'><br>").insertAfter("#last");
       counter ++;
     }
     });
