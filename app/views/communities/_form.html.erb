@@ -1,14 +1,12 @@
+<div class="form-group" style="width: 50%; margin-left: 25%;">
 <%= form_for @community do |f| %>
   <%= f.label :name %>:
-  <%= f.text_field :name %><br>
-
-  <%= f.label :pickup_site %>:
-  <%= f.text_field :pickup_site %><br>
-
-  <%= f.label :tag %>:
-  <%= f.text_field :tag %><br>
-
+  <%= f.text_field :name, class: "form-control", placeholder: "Name", required: true %><br>
+  <%= f.label :pickup_site, "Pickup Site" %>:
+  <%= f.text_field :pickup_site, class: "form-control", placeholder: "Pickup Site" %><br>
+  <%= f.label :tag, "Description" %>:
+  <%= f.text_field :tag, class: "form-control", placeholder: "Description", required: true %><br>
   <%= f.hidden_field :admin_id, value: current_user.id %>
-
-  <%= f.submit %>
+  <%= f.button "Start a Community", class: "btn btn-color" %>
 <% end %>
+</div>

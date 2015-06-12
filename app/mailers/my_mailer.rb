@@ -25,17 +25,17 @@ class MyMailer < Devise::Mailer
     mail(to: @email, subject: "You have a request to join your community!")
   end
 
-  def send_to_rejected(community, rejected)
-     @url = community_path
-     @rejected = rejected.email
+  def send_to_rejected(rejected, community)
+     @url = communities_path
+     @email = rejected.email
      @community = community
-     mail(to: @email, subject: "We're sorry this group is privite! Try Starting Your Own Community")
+     mail(to: @email, subject: "We're sorry this group is privite. Try Starting Your Own Community")
   end
 
   def send_to_accepted(accepted, community)
     @community = community
-    @accepted = accepted.email
+    @email = accepted.email
     @url = community_path(@community)
-    mail(to: @email, subject: "")
+    mail(to: @email, subject: "You have Accepted Into A New Community")
   end
 end
