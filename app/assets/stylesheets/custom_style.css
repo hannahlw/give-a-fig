@@ -1,6 +1,17 @@
+/* Green accent lines */
+
+div.block-heading-two span.green-line {
+	padding-bottom: 10px;
+  border-bottom: 3px solid #51d466;
+}
+
+div.block-heading-two h3 {
+  margin-bottom: 10px;
+  line-height: 30px;
+  border-bottom: 2px solid #ccc;
+}
 
 /* Square */
-/* comment */
 .square-1 {
 	display:inline-block;
 	margin-top: 3px;
@@ -35,6 +46,7 @@ a.logo {
 	padding: 15px 0px;
   text-align: center;
 }
+
 
 .actions {
 	margin-top: 3px;

@@ -6,13 +6,13 @@
         <h2 style="font-size: 3em; font-weight: bold;"><%= @community.name %> Community</h2>
         <p style="background: rgba(54, 25, 25, .5);">Community Location: <%= @community.pickup_site %></p>
         <p style="background: rgba(54, 25, 25, .5);">Description of Community: <%= @community.tag %></p>
-    
-    
+
+
 <!-- end page top -->
 <div style="margin-left: 77%;">
 <!-- Button to Request Invite Or Leave -->
 <% if user_signed_in? && !@community.is_admin?(current_user) %>
-  <div class="row"> 
+  <div class="row">
     <div class="col-md-7 col-sm-6">
       <% if current_user %>
         <% if member?(@community, current_user) %>
@@ -39,11 +39,11 @@
 <div class="container">
 <!-- page starter -->
 
-<div class="row"> 
+<div class="row">
   <div class="col-md-7 col-sm-8">
     <% if @community.users.include?(current_user) || @community.is_admin?(current_user) %>
       <div class="block-heading-two">
-        <h3><span style= "border-color: #51d466;">Posted Food Items</span></h3>
+        <h3><span class="green-line">Posted Food Items</span></h3>
       </div>
       <% User.all.each do |user| %>
         <% if !user.posted_food.where("community_id = ?", @community.id).empty? %>
@@ -92,8 +92,8 @@
       <div class="col-md-5 col-sm-6">
         <div class="block-heading-two">
           <% if @community.is_user_or_admin?(current_user) %>
-              <h3><span style= "border-color: #51d466;">Post a New Food Item</span></h3>
-         </div>   
+              <h3><span class="green-line">Post a New Food Item</span></h3>
+         </div>
             <%= form_for FoodItem.new do |f| %>
             <div class="col-md-6 col-sm-6">
             <div class="form-group">
@@ -121,7 +121,7 @@
             </div>
             </div>
             <% end %>
-          </div>   
+          </div>
         <% end %>
       <% end %>
     <% end %>
@@ -141,8 +141,8 @@
       <div class="panel-heading">
         <h4 class="panel-title"><a data-toggle="collapse" data-parent="#accordion-alt2" href="#collapseOne-alt2" aria-expanded="true" class="">Invite Your Community to This Group</a></h4>
       </div>
-      <div id="collapseOne-alt2" class="panel-collapse collapse in" aria-expanded="true">         
-         <div class="panel-body">            
+      <div id="collapseOne-alt2" class="panel-collapse collapse in" aria-expanded="true">
+         <div class="panel-body">
            <form action="<%= @community.id%>/invite" method="post" data-remote="true" style="width:200px;">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input id="email-input" class="form-control" type="text" name="user[email]" placeholder="Email Address"/><br>
@@ -162,7 +162,7 @@
        </div>
 
      <div id="collapseTwo-alt2" class="panel-collapse collapse in" aria-expanded="true">
-        <div class="panel-body"> 
+        <div class="panel-body">
 
          <% @community.requesters.each do |requester| %>
          <div class="container">
@@ -200,8 +200,8 @@
           </div>
         <% end %><!-- ends requester section -->
        </div>
-      </div>  
-  </center>    
+      </div>
+  </center>
   <% end %><!-- ends full admin section -->
   </div>
 </div>
@@ -212,5 +212,3 @@
 <br>
 <br>
 <br>
-
-
