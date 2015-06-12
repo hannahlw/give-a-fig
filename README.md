@@ -4,16 +4,17 @@
 Social hub for community food-sharing and resources to eliminate food waste by putting it to use. 
 
 ## Features
-•	Email notifications and invitation system for users and groups<br>
+•	User-created communities for posting and sharing food<br>
 •	Search by location or zip to find compost sites and food donation drop-offs<br>
 •	Recipe search for single or multiple ingredients.<br>
+•	Email notifications and invitation system for users and groups<br>
 •	Utilizes NYC Open Data, Google Maps API, Yummly API<br>
 
 ## Usage
-<a href="give-a-fig.herokuapp.com">Create an account</a> on our Heroku app.
+<a href="https://give-a-fig.herokuapp.com">Create an account</a> on our Heroku app.
 
 ## Future
-Expanded community features.
+Expanded community features such as hosting dinners, composting, food drives. 
 
 ## Authors
 Jon Tow, Hannah Westheimer, Stefania Sicurelli, Summer Min
