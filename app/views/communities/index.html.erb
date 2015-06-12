@@ -1,29 +1,28 @@
-<div class="page-heading-two">
-    <div class="container">
-  
-    <h2>Give-a-Fig Communities</h2>
-  </div>
-</div>
-
 <div class="container">
-
-<table style="font-size: 1.5em; width: 100%;">
-<% if user_signed_in? %>
-<tr>
-  <th>Community Name</th>
-  <th>Community Description</th>
-  <th>Community Location</th>
-</tr>
-  <% @communities.each do |community| %>
-    <tr>
-    <td><%= link_to community.name, community_path(community) %></td>
-    <td><%= community.tag %></td>  <td><%= community.pickup_site %></td>
-    </tr>
-  <% end %>
-<% end %>
-</table>
-
-</div>
-<div class="entire-footer">
-  <%= render :partial => "layouts/footer" %>
-</div>
+  <h1>All Communities</h1>
+  <div id="container">
+    <ul class="row" id="row-style">
+      <% if user_signed_in? %>
+        <% @communities.each do |community| %>
+          <li class="col-md-4 col-sm-6"><span class="box-style">
+            <h1 id="title"><%= link_to community.name, community_path(community) %></h1>
+            <ul class="row" style="list-style:none;">
+              <li>
+                <h3>Pickup Site:</h3>
+                <ul class="ul-style">
+                  <li><h4><%= community.pickup_site %></h4></li>
+                </ul>
+              </li>
+              <li>
+                <h3>Description:</h3>
+                <ul class="ul-style">
+                  <li><h4><%= community.tag %></h4></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div> 

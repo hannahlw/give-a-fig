@@ -2,3 +2,21 @@
         width: 100%;
         height: 300px;
       }
+
+div.block-heading-two h3.maps-title {
+  margin-bottom: 0px;
+}
+
+div.block-heading-two {
+  margin-bottom: 0px;
+}
+
+div.block-heading-two h3 {
+  margin-bottom: 10px;
+  line-height: 30px;
+  border-bottom: 2px solid #888;
+}
+
+div.block-heading-two h3 span {
+  border-bottom: 0px;
+}

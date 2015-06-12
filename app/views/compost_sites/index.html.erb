@@ -3,7 +3,7 @@
 
 <div class="text-center">
   <div class="block-heading-two">
-    <h3><span>Compost Sites</span></h3>
+    <h3 class = "maps-title"><span>Compost Sites</span></h3>
   </div>
   <div id="map-canvas"></div>
   <div class="container">
@@ -12,7 +12,7 @@
       <%= text_field_tag "zip_code", nil, placeholder: "Enter zip code"%>
       <%= submit_tag "Search", class: 'zip_search' %>
     <% end %><br>
-    
+
       <div class="row">
          <div class="col-md-6 col-sm-6">
          <strong>Donation centers near you:</strong><br>
@@ -31,11 +31,5 @@
     <h4>The following are compost drop off locations around New York City. Click on the location to learn more about the location.</h4>
     <h4>Also, checkout <a href="http://www1.nyc.gov/site/dsny/recycling-and-garbage/residents/organics-collection-and-drop-off-for-residents.page" target="_blank">NYC Compost Project</a> to see if the City of New York picks up compost in your neighhorbood!</h4></blockquote></div>
       </div>
-
   </div>
-
 </div>
-<%= render :partial => "layouts/footer" %>
-
-</div>
-

@@ -3,7 +3,7 @@
 
 <div class="text-center">
   <div class="block-heading-two">
-  	<h3><span>Food Pantry Donation Sites</span></h3>
+  	<h3 class = "maps-title"><span>Food Pantry Donation Sites</span></h3>
   </div>
   <div id="map-canvas"></div>
   <div class="container">
@@ -21,7 +21,7 @@
       <div class="scroll">
         <div class="cta-one-content">
           <ul class="list">
-            
+
             <% @donationsites.each do |donation| %>
             <li class="<%= donation.latitude %> <%= donation.longitude %>">
               <strong><%= donation.name %></strong></br><%= donation.address %></li>
@@ -38,9 +38,5 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </div>
-<%= render :partial => "layouts/footer" %>
-
