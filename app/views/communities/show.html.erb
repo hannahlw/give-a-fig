@@ -3,13 +3,13 @@
   <div class="outer">
     <div class="main-block">
       <div class="page-heading-one">
-        <h2 style="background: rgba(54, 25, 25, .5);"><%= @community.name %> Community</h2>
+        <h2 style="font-size: 3em; font-weight: bold;"><%= @community.name %> Community</h2>
         <p style="background: rgba(54, 25, 25, .5);">Community Location: <%= @community.pickup_site %></p>
         <p style="background: rgba(54, 25, 25, .5);">Description of Community: <%= @community.tag %></p>
     
     
 <!-- end page top -->
-<div style="">
+<div style="margin-left: 77%;">
 <!-- Button to Request Invite Or Leave -->
 <% if user_signed_in? && !@community.is_admin?(current_user) %>
   <div class="row"> 
@@ -17,7 +17,7 @@
       <% if current_user %>
         <% if member?(@community, current_user) %>
           <%= form_for @community, action: :update, method: :put do |f| %>
-            <%= f.submit "Leave Community", id: "leave-button", class: "btn btn-green", style: "margin-left:-70%; font-size: 0.9em;"  %>
+            <%= f.submit "Leave Community", id: "leave-button", class: "btn btn-green", style: " font-size: 0.9em;"  %>
           <% end %>
         <% else  %>
           <form action="<%= @community.id%>/ask_admin" method="post" data-remote="true" style="width:200px;">
@@ -133,7 +133,8 @@
   </div>
 </div>
 
-<!-- Admin Section -->
+<!-- Admin Section —>
+
 
 <div class="panel-group container" id="accordion-alt2">
   <% if @community.is_admin?(current_user) %>
@@ -181,11 +182,11 @@
             <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input type="hidden"  name="email"  value="<%= requester.email %>">
-              <input class="reset btn btn-red" style="margin-left: 45%;" type="submit" value="Accept"/>
+              <input class="reset btn btn-red" style="margin-left: 100%;" type="submit" value="Accept"/>
             </form>
-            <div class="acceptmessage" style="display: none;">
+            <!-- <div class="acceptmessage" style="display: none;">
               <h3>Accepted Message Sent</h3>
-            </div>
+            </div> -->
           </div>
 
           <!-- rejected email form -->
@@ -193,12 +194,11 @@
             <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
               <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
               <input type="hidden"  name="email"  value="<%= requester.email %>">
-              <input class="reset btn btn-red", id="accept-button" style="  margin-top: -30%;
-  margin-left: 70%" type="submit" value="Reject"/>
+              <input class="reset btn btn-red", id="accept-button" style="  margin-top: -30%; margin-left: 70%" type="submit" value="Reject"/>
             </form>
-            <div class="rejectmessage" style="display: none;">
+            <!-- <div class="rejectmessage" style="display: none;">
               <h3>Rejected Message Sent</h3>
-            </div>
+            </div> -->
           </div>
           </div>
         <% end %><!-- ends requester section -->

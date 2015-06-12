@@ -76,10 +76,8 @@ class CommunitiesController < ApplicationController
   def reject
     @community = Community.find(params["id"])
     @rejected = Requester.find_by(email: params['email'])
-    if 
     cr = CommunityRequester.find_by(requester_id: @rejected.id, community_id: @community.id)
     cr.destroy
-  end
     @rejected.destroy
     MyMailer.send_to_rejected(@rejected, @community).deliver_now
   end
