@@ -5,6 +5,7 @@
     <title>Give-A-Fig</title>
     <center>
       <a href="/"><img src="/assets/giveafig_logo.png" height="150" width="175" class="logo"></a>
+      <link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
     </center>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -39,6 +40,6 @@
     <%= yield %>
 
     <!-- Footer -->
-
+    <%= render :partial => "layouts/footer" %>
   </body>
 </html>
