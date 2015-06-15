@@ -39,8 +39,8 @@ class CommunitiesController < ApplicationController
     @community = Community.find(params["id"])
     if User.find_by(email: params['user']['email'])
       member = Invitee.create(email: params['user']['email'])
-     @community.invitees << member
-     @community.save
+      @community.invitees << member
+      @community.save
       MyMailer.add_existing_member(member, @community).deliver_now
     else # user needs to sign up
       member = Invitee.create(email: params['user']['email'])
@@ -68,6 +68,11 @@ class CommunitiesController < ApplicationController
     @community = Community.find(params["id"])
     @accepted = User.find_by(email: params['email'])
     @community.users << @accepted
+    @requester = Requester.find_by(email: params['email'])
+    @requester_id = @requester.id
+
+    @community.requesters.delete(@requester)
+    @requester.destroy
     @community.save
     MyMailer.send_to_accepted(@accepted, @community).deliver_now
   end
@@ -75,6 +80,7 @@ class CommunitiesController < ApplicationController
   def reject
     @community = Community.find(params["id"])
     @rejected = Requester.find_by(email: params['email'])
+    @requester_id = @rejected.id
     cr = CommunityRequester.find_by(requester_id: @rejected.id, community_id: @community.id)
     cr.destroy
     @rejected.destroy
