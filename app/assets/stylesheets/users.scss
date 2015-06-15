@@ -20,7 +20,7 @@
   margin: 10px;
   background-color: #f3f3f3;
   border-radius: 20px;
-  min-height: 170px;
+  height: 200px;
   padding: 10px;
   padding-bottom: 30px;
 }
@@ -33,4 +33,13 @@
   list-style: none;
   padding-left: 20px;
   padding-right: 20px;
+  overflow: hidden;
+}
+
+.scroll {
+  position:relative;
+  text-align: left;
+  width: 90%;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

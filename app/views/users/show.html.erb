@@ -5,7 +5,7 @@
 <div id="container">
 <ul class="row" id="row-style">
   <% @user.my_communities.each do |community| %>
-      <li class="col-md-4 col-sm-6"><span class="box-style">
+      <li class="col-md-4 col-sm-6"><span class="box-style scroll">
         <h3 id="title">
           <%= link_to community.name, community %>
           <% if @user.id == community.admin_id %>
