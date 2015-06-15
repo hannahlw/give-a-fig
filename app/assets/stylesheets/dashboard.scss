@@ -9,3 +9,17 @@ div.navy ul li ul.submenu {
 div.img-box-4 .img-box-4-content {
   height: 165px;
 }
+
+div.img-box-4.text-center h3 {
+  text-align: left;
+  color: rgb(119, 119, 119);
+  padding-left: 4%;
+  margin-top: 35px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+div.img-box-4-item img.img-responsive {
+  width: 260px;
+  height: 173px;
+}

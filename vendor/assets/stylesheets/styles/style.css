@@ -6174,7 +6174,7 @@ body.boxed.img-5 {
 /* Quote two */
 .quote-two{
 	background:url("../../img/raster.png"),url("/assets/summers/carrots.jpg") center center;
-	background-size: 100%;
+	background-size: cover;
 	height: 400px;
 	width: 100%;
 	background-attachment:fixed;

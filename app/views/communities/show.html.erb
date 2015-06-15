@@ -166,7 +166,7 @@
 <!-- requesters accept or reject section -->
      <div class="panel panel-lblue">
        <div class="panel-heading">
-         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-alt2" href="#collapseTwo-alt2" class="" aria-expanded="true">Poeple Who Have Requested to Join Your Community</a></h4>
+         <h4 class="panel-title"> <a data-toggle="collapse" data-parent="#accordion-alt2" href="#collapseTwo-alt2" class="" aria-expanded="true">People Who Have Requested to Join Your Community</a></h4>
        </div>
 
      <div id="collapseTwo-alt2" class="panel-collapse collapse in" aria-expanded="true">
@@ -183,26 +183,26 @@
 
             <!-- accepted email form -->
             <div class="col-md-4">
-              <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;">
+              <form action="<%= @community.id%>/accept" method="post" data-remote="true" style="width:200px;" class = "accept_<%= requester.id %>">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <input type="hidden"  name="email"  value="<%= requester.email %>">
                 <input class="reset btn btn-red" type="submit" value="Accept"/>
               </form>
-              <!-- <div class="acceptmessage" style="display: none;">
-                <h3>Accepted Message Sent</h3>
-              </div> -->
+              <div class="acceptmessage" style="display: none;">
+                <h4>Accepted Message Sent</h4>
+              </div>
             </div>
 
             <!-- rejected email form -->
               <div class="col-md-4">
-                <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;">
+                <form action="<%= @community.id%>/reject" method="post" data-remote="true" style="width:200px;" class = "reject_<%= requester.id %>">
                   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                   <input type="hidden"  name="email"  value="<%= requester.email %>">
                   <input class="reset btn btn-red", id="accept-button" style="" type="submit" value="Reject"/>
                 </form>
-                <!-- <div class="rejectmessage" style="display: none;">
-                  <h3>Rejected Message Sent</h3>
-                </div> -->
+                <div class="rejectmessage" style="display: none;">
+                  <h4>Rejected Message Sent</h4>
+                </div>
               </div>
             </div>
           </div>
