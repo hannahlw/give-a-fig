@@ -4,7 +4,7 @@
     <ul class="row" id="row-style">
       <% if user_signed_in? %>
         <% @communities.each do |community| %>
-          <li class="col-md-4 col-sm-6"><span class="box-style">
+          <li class="col-md-4 col-sm-6"><span class="box-style scroll">
             <h1 id="title"><%= link_to community.name, community_path(community) %></h1>
             <ul class="row" style="list-style:none;">
               <li>

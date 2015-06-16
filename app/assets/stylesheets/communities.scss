@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+.scroll {
+  padding-top: 0px;
+  position:relative;
+  text-align: left;
+  width: 90%;
+  height: 250px;
+  overflow: scroll;
+}
 
 #square {
     float:left; 
